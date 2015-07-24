@@ -1,0 +1,10 @@
+[ui]
+username = Anton S <residentsummer@gmail.com>
+ignore = ~/.hgignore_global
+
+[extensions]
+purge =
+
+[alias]
+l5 = log -l 5
+

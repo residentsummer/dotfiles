@@ -1,0 +1,10 @@
+syntax: glob
+
+*~
+.DS_Store
+Prototype.xcodeproj/project.xcworkspace
+Prototype.xcodeproj/xcuserdata
+Podfile.lock
+.*.sw[po]
+.*.py[cod]
+.sw[po]
