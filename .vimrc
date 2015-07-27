@@ -373,11 +373,15 @@ let g:bufferline_rotate=1
 let g:clojure_align_multiline_strings = 1
 "}}}
 "{{{ jedi-vim
-let g:jedi#completions_command = "<C-N>"
 " Jedi is changing completeopt otherwise
 let g:jedi#auto_vim_configuration = 0
+" Automatic completion only distracts me
+let g:jedi#show_call_signatures = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#popup_on_dot = 0
+" Mappings
+let g:jedi#goto_assignments_command = ""
+let g:jedi#completions_command = "<C-N>"
 let g:jedi#goto_command = "<C-]>"
 "}}}
 "{{{ gundo
