@@ -205,6 +205,9 @@ autocmd vimrc BufReadPost *
 "set 'textwidth' to 78 characters for text files.
 autocmd vimrc FileType text setlocal textwidth=78
 "}}}
+"{{{  json
+let g:vim_json_syntax_conceal = 0
+"}}}
 "{{{  c/c++
 "{{{  Omni completion settings
 let OmniCpp_NamespaceSearch = 1
