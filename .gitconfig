@@ -5,6 +5,7 @@
     excludesfile = ~/.gitignore_global
     editor = vim
     pager = less -FRX
+    autocrlf = input
 [color]
     ui = true
 [push]
