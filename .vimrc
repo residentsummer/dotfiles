@@ -65,6 +65,9 @@ Plugin 'view_diff'
 Plugin 'The-NERD-tree'
 Plugin 'majutsushi/tagbar'
 
+" Kindergarden
+Plugin 'davidhalter/jedi-vim'
+
 " 'Marks-Browser'
 " 'OmniCppComplete'
 " 'Tag-Signature-Balloons'
@@ -368,6 +371,14 @@ let g:bufferline_rotate=1
 " Add some style
 " let g:clojure_special_indent_words += ",apply,defhandler"
 let g:clojure_align_multiline_strings = 1
+"}}}
+"{{{ jedi-vim
+let g:jedi#completions_command = "<C-N>"
+" Jedi is changing completeopt otherwise
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#goto_command = "<C-]>"
 "}}}
 "{{{ gundo
 " More space for diff window
