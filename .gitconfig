@@ -1,15 +1,15 @@
 [user]
-    name = Anton S
-    email = residentsummer@gmail.com
+	name = Anton S
+	email = residentsummer@gmail.com
 [core]
-    excludesfile = ~/.gitignore_global
-    editor = vim
-    pager = less -FRX
-    autocrlf = input
+	excludesfile = ~/.gitignore_global
+	editor = vim
+	pager = less -FRX
+	autocrlf = input
 [color]
-    ui = true
+	ui = true
 [push]
-    default = current
+	default = current
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -17,20 +17,20 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [alias]
-    cm = commit -m
-    st = status
-    co = checkout
-    cb = checkout -b
-    br = branch
-    ri = rebase -i --autosquash
-    ai = add -i
-    lg = log --graph --oneline --decorate
-    ml = merge --no-ff --log --no-commit
-    mlc = merge --no-ff --log
-    cp  = cherry-pick
-    cpm = cherry-pick -m1
-    r  = reset
-    rh = reset --hard
-    rhh = reset --hard HEAD
-    pu = push -u
-    rems = remote -v
+	cm = commit -m
+	st = status
+	co = checkout
+	cb = checkout -b
+	br = branch
+	ri = rebase -i --autosquash
+	ai = add -i
+	lg = log --graph --oneline --decorate
+	ml = merge --no-ff --log --no-commit
+	mlc = merge --no-ff --log
+	cp = cherry-pick
+	cpm = cherry-pick -m1
+	r  = reset
+	rh = reset --hard
+	rhh = reset --hard HEAD
+	pu = push -u
+	rems = remote -v
