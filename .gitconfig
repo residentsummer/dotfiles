@@ -22,6 +22,7 @@
 	co = checkout
 	cb = checkout -b
 	br = branch
+	brs = branch -v
 	ri = rebase -i --autosquash
 	ai = add -i
 	lg = log --graph --oneline --decorate
