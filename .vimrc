@@ -67,6 +67,10 @@ Plugin 'majutsushi/tagbar'
 
 " Kindergarden
 Plugin 'davidhalter/jedi-vim'
+" Snipmate with deps
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
 " 'Marks-Browser'
 " 'OmniCppComplete'
@@ -76,7 +80,6 @@ Plugin 'davidhalter/jedi-vim'
 " 'STL-improved'
 " 'javacomplete'
 " 'openssl.vim'
-" 'msanders/snipmate.vim'
 " 'spiiph/vim-space'
 " 'mileszs/ack.vim'
 " 'bling/vim-airline'
