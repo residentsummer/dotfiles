@@ -35,3 +35,5 @@
 	rhh = reset --hard HEAD
 	pu = push -u
 	rems = remote -v
+	unstage = reset --
+	staged = diff --cached
