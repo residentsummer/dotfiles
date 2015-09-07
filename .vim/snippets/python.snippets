@@ -1,0 +1,35 @@
+# Python snippets, BAM!
+version 1
+
+snippet log
+	logger.${1:info}(${2:'$3'.format($4)})
+endsnippet
+snippet logj Log object as JSON
+	import json; logger.${1:info}('${2:o}: {o}'.format(o=json.dumps(${2}${3:, indent=4}${4:, default=unicode})))
+endsnippet
+
+snippet forkv No-hassle dict iteration
+	for ${1:k}, ${2:v} in ${3:d}.iteritems()$0
+endsnippet
+snippet for No-hassle iteration
+	for ${1:v} in ${2:c}$0
+endsnippet
+
+snippet gtl Import celery logger
+	from celery.utils.log import get_task_logger
+	logger = get_task_logger(__name__)
+	$0
+endsnippet
+
+# Borrowed from honza/vim-snippets
+
+# if __name__ == '__main__':
+snippet ifmain
+	if __name__ == '__main__':
+		${0:main()}
+endsnippet
+
+snippet akw
+	*args, **kwargs
+endsnippet
+
