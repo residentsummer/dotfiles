@@ -5,7 +5,10 @@ snippet log
 	logger.${1:info}(${2:'$3'.format($4)})
 endsnippet
 snippet logj Log object as JSON
-	import json; logger.${1:info}('${2:o}: {o}'.format(o=json.dumps(${2}${3:, indent=4}${4:, default=unicode})))
+	import json
+	logger.${1:info}(u'${2:o}: {o}'.format(
+		o=json.dumps(${2}, indent=4, default=unicode, ensure_ascii=False
+	)))
 endsnippet
 
 snippet forkv No-hassle dict iteration
