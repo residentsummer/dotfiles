@@ -1,0 +1,18 @@
+[CONFIG]
+
+# C0111 no docstring
+# R0903 too few public methods
+disable=C0111,R0903
+
+# List of builtins function names that should not be used, separated by a comma
+bad-functions=input
+
+# Maximum number of characters on a single line.
+max-line-length=100
+
+# List of optional constructs for which whitespace checking is disabled
+no-space-check=trailing-comma
+
+# List of note tags to take in consideration, separated by a comma.
+notes=FIXME,XXX,TODO,NOTE
+
