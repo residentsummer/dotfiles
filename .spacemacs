@@ -186,6 +186,7 @@ by modifying its syntax table."
   (evil-leader/set-key
     "SPC" 'evil-switch-to-windows-last-buffer
     "gco" 'magit-checkout
+    "gcb" 'magit-branch-and-checkout
     "w" 'evil-write)
   (define-key evil-normal-state-map ",." 'helm-projectile-find-file)
   (define-key evil-normal-state-map ",/"
@@ -218,6 +219,13 @@ by modifying its syntax table."
      (tab-mark   \t   [\xBB \t] [\\ \t]) ; tab
      (space-mark \    [\xB7]    [.])     ; space
      (space-mark \xA0 [\xA4]    [_])))   ; hard space
+  ; Use magit in fullscreen
+  (defadvice magit-status (around magit-fullscreen activate)
+    (window-configuration-to-register :magit-fullscreen)
+    ad-do-it
+    (delete-other-windows))
+  (defadvice magit-mode-quit-window (after magit-fullscreen activate)
+    (jump-to-register :magit-fullscreen))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
