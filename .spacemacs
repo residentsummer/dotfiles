@@ -21,8 +21,9 @@
      ;; better-defaults
      version-control
      syntax-checking
+     (colors :variables
+             colors-enable-rainbow-identifiers t)
      evil-commentary
-     vim-powerline
      restclient
      git
      osx
@@ -123,7 +124,7 @@ before layers configuration."
    dotspacemacs-enable-paste-micro-state nil
    ;; Guide-key delay in seconds. The Guide-key is the popup buffer listing
    ;; the commands bound to the current keystrokes.
-   dotspacemacs-guide-key-delay 2
+   dotspacemacs-guide-key-delay .8
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time.
@@ -137,7 +138,7 @@ before layers configuration."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'.
@@ -183,17 +184,18 @@ by modifying its syntax table."
    magit-revert-buffers nil
    projectile-enable-caching nil
    rainbow-delimiters-mode t)
+  ; Bindings
   (evil-leader/set-key
     "SPC" 'evil-switch-to-windows-last-buffer
-    "gco" 'magit-checkout
     "gcb" 'magit-branch-and-checkout
+    "gco" 'magit-checkout
     "w" 'evil-write)
+  (define-key evil-normal-state-map
+    ",/" 'spacemacs/helm-project-smart-do-search-region-or-symbol)
   (define-key evil-normal-state-map ",." 'helm-projectile-find-file)
-  (define-key evil-normal-state-map ",/"
-    'spacemacs/helm-project-smart-do-search-region-or-symbol)
   (define-key evil-normal-state-map "H" 'sp-newline)
   (define-key evil-commentary-mode-map "\\" 'evil-commentary-line)
-  ; Who needs mapping starting with Esc?
+  ; Who needs mappings starting with Esc?
   (setq evil-esc-delay 0)
   ; Move PATH configuration to host-specific file?
   (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
