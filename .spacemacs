@@ -194,7 +194,12 @@ by modifying its syntax table."
     ",/" 'spacemacs/helm-project-smart-do-search-region-or-symbol)
   (define-key evil-normal-state-map ",." 'helm-projectile-find-file)
   (define-key evil-normal-state-map "H" 'sp-newline)
-  (define-key evil-commentary-mode-map "\\" 'evil-commentary-line)
+  (evil-define-key 'visual evil-commentary-mode-map
+    "\\y" 'evil-commentary-yank
+    "\\\\" 'evil-commentary)
+  (evil-define-key 'normal evil-commentary-mode-map
+    "\\y" 'evil-commentary-yank-line
+    "\\\\" 'evil-commentary-line)
   ; Who needs mappings starting with Esc?
   (setq evil-esc-delay 0)
   ; Move PATH configuration to host-specific file?
