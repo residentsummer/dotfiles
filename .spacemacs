@@ -158,7 +158,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -218,8 +218,6 @@ layers configuration. You are free to put any user code."
   ; Bindings
   (evil-leader/set-key
     "SPC" 'evil-switch-to-windows-last-buffer
-    "gcb" 'magit-branch-and-checkout
-    "gco" 'magit-checkout
     "w" 'evil-write)
   (define-key evil-normal-state-map
     ",/" 'spacemacs/helm-project-smart-do-search-region-or-symbol)
@@ -231,8 +229,9 @@ layers configuration. You are free to put any user code."
   (evil-define-key 'normal evil-commentary-mode-map
     "\\y" 'evil-commentary-yank-line
     "\\\\" 'evil-commentary-line)
-  ; Who needs mappings starting with Esc?
-  (setq evil-esc-delay 0)
+  (setq
+    ; Who needs mappings starting with Esc?
+    evil-esc-delay 0)
   ; Move PATH configuration to host-specific file?
   (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
   (setq exec-path (cons "/usr/local/bin" exec-path))
