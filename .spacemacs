@@ -32,6 +32,7 @@ values."
                  evil-snipe-enable-highlight t
                  evil-snipe-enable-incremental-highlight t)
      osx
+     (spell-checking :variables spell-checking-enable-by-default nil)
      ;; Prog
      auto-completion
      (colors :variables
