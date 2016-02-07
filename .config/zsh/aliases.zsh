@@ -14,5 +14,6 @@ alias dex='docker exec -it'
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then
     alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport'
+    alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
 fi
 
