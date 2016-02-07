@@ -5,3 +5,9 @@ mkcd () {
     cd $1
 }
 
+remux () {
+    host=$1
+    shift
+    ssh $host -t -C "tmux $@ attach -t remux || tmux $@ new -s remux"
+}
+
