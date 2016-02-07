@@ -232,6 +232,16 @@ layers configuration. You are free to put any user code."
   (setq
     ; Who needs mappings starting with Esc?
     evil-esc-delay 0)
+  ; Don't pop completion menu here and there
+  (setq company-idle-delay nil)
+  (define-key evil-insert-state-map
+    (kbd "TAB") 'company-indent-or-complete-common)
+  ; Replace evil completion with company, preserving bindings
+  (define-key evil-insert-state-map (kbd "C-n") nil)
+  (define-key evil-insert-state-map (kbd "C-p") nil)
+  (evil-define-key 'insert company-mode-map
+    (kbd "C-n") 'company-select-next
+    (kbd "C-p") 'company-select-previous)
   ; Move PATH configuration to host-specific file?
   (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
   (setq exec-path (cons "/usr/local/bin" exec-path))
