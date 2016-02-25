@@ -6,10 +6,10 @@ alias -g V="| vim -R -"
 alias -g G="| grep"
 
 alias dk=docker
-alias fl=fleetctl
-alias fig=docker-compose
+alias dc=docker-compose
 alias dkr='docker run -it --rm'
 alias dex='docker exec -it'
+alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}"'
 
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then
