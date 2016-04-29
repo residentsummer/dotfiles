@@ -32,11 +32,10 @@ values."
                  evil-snipe-enable-highlight t
                  evil-snipe-enable-incremental-highlight t)
      osx
+     colors
      (spell-checking :variables spell-checking-enable-by-default nil)
      ;; Prog
      auto-completion
-     (colors :variables
-             colors-enable-rainbow-identifiers t)
      evil-commentary
      git
      restclient
@@ -51,7 +50,8 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '(color-identifiers-mode)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -197,7 +197,9 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
-  )
+	(setq
+   color-identifiers:min-color-saturation 0.3
+   color-identifiers:num-colors 25))
 
 ; https://bitbucket.org/lyro/evil/issues/187/the-evil-word-variable-is-not-used-for
 (defun evil-add-word-constituents (char-string)
