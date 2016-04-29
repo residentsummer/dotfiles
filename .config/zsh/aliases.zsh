@@ -1,6 +1,7 @@
 
 alias vi=vim
 alias ll='ls -l'
+alias ec='emacsclient -nq'
 
 alias -g V="| vim -R -"
 alias -g G="| grep"
