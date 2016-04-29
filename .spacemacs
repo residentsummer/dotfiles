@@ -90,7 +90,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai)
+   dotspacemacs-themes '(spacemacs-dark)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -200,7 +200,25 @@ It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
 	(setq
    color-identifiers:min-color-saturation 0.3
-   color-identifiers:num-colors 25))
+   color-identifiers:num-colors 25
+   ; This makes spacemaces look like my cross of xoria and wombat
+   spacemacs-theme-custom-colors
+   '((bg1 . "#242424")
+     (bg2 . "#202020")
+     (bg3 . "#1b1b1b")
+     (bg4 . "#181818")
+     (base . "#f6f3e8")
+     (base-dim . "#f2efe4")
+     (cursor . "#656565")
+     (const . "#e5786d")
+     (type . "#e5786d")
+     (func . "#cae682")
+     (var . "#cae682")
+     (str . "#95e454")
+     (keyword . "#8ac6f2")
+     (comment . "#99968b")
+     (comment-bg . "#242424")
+     (match . "#f6f3e8"))))
 
 ; https://bitbucket.org/lyro/evil/issues/187/the-evil-word-variable-is-not-used-for
 (defun evil-add-word-constituents (char-string)
