@@ -236,6 +236,9 @@ layers configuration. You are free to put any user code."
    magit-revert-buffers nil
    projectile-enable-caching nil
    rainbow-delimiters-mode t)
+  (set-face-attribute
+   'evil-search-highlight-persist-highlight-face
+   nil :background "#ff00ff")
   ; Bindings
   (evil-leader/set-key
     "SPC" 'evil-switch-to-windows-last-buffer
