@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<root>
+    <item>
+      <name>Disable Quit Application shortcut in Chrome</name>
+      <identifier>remap.app_google_chrome_disable_quit_app</identifier>
+      <only>GOOGLE_CHROME</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+      </autogen>
+    </item>
+
+    <item>
+      <name>Use "hjkl" keys as arrow keys if you are not editing text (finder fix).</name>
+
+      <item>
+        <name>Enable in some standard apps.</name>
+        <appendix>Supported Applications:</appendix>
+        <appendix>- Finder, iPhoto, iTunes, Mail.app.</appendix>
+        <appendix>- Activity Monitor.</appendix>
+        <appendix>- System Preferences, Karabiner, Seil.</appendix>
+        <identifier>remap.hjkl_arrow_fixed</identifier>
+
+        {{ HJKL_ARROW_EXTRA }}
+
+        <block>
+          <only>
+            IPHOTO, ITUNES, SYSTEM_PREFERENCES,
+            Activity_Monitor,
+            Karabiner, Seil,
+          </only>
+          <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+          <modifier_only>
+            ModifierFlag::NONE,
+            ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+            ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+          </modifier_only>
+          <autogen>__KeyToKey__ {{ VI_H }}, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>__KeyToKey__ {{ VI_J }}, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>__KeyToKey__ {{ VI_K }}, KeyCode::CURSOR_UP</autogen>
+          <autogen>__KeyToKey__ {{ VI_L }}, KeyCode::CURSOR_RIGHT</autogen>
+        </block>
+
+        <block>
+          <only>
+            FINDER
+          </only>
+          <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+          <modifier_only>
+            ModifierFlag::NONE,
+            ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+            ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+          </modifier_only>
+          <autogen>__KeyToKey__ {{ VI_J }}, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>__KeyToKey__ {{ VI_K }}, KeyCode::CURSOR_UP</autogen>
+          <autogen>
+              __KeyToKey__
+              {{ VI_H }}, ModifierFlag::NONE,
+              KeyCode::CURSOR_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE
+          </autogen>
+          <autogen>
+              __KeyToKey__
+              {{ VI_L }}, ModifierFlag::NONE,
+              KeyCode::CURSOR_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE
+          </autogen>
+        </block>
+
+        <block>
+          <only>MAIL</only>
+          <!-- Mail body editor is AXWebArea -->
+          <uielementrole_not>AXTextField, AXTextArea, AXWebArea</uielementrole_not>
+          <modifier_only>
+            ModifierFlag::NONE,
+            ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+            ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+          </modifier_only>
+          <autogen>__KeyToKey__ {{ VI_H }}, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>__KeyToKey__ {{ VI_J }}, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>__KeyToKey__ {{ VI_K }}, KeyCode::CURSOR_UP</autogen>
+          <autogen>__KeyToKey__ {{ VI_L }}, KeyCode::CURSOR_RIGHT</autogen>
+        </block>
+      </item>
+    </item>
+
+</root>
