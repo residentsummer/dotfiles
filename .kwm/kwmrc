@@ -36,12 +36,15 @@ kwmc config padding 25 5 5 5
 // Set default values for container gaps
 kwmc config gap 3 3
 
-// Default tiling mode for Kwm (bsp | monocle | float | off)
+// Default tiling mode for Kwm (bsp | monocle | float)
 kwmc config tiling monocle
 // terminals
 kwmc config space 0 1 mode bsp
 // editors
 kwmc config space 0 3 mode bsp
+// floating space
+kwmc config space 0 5 mode float
+kwmc config space 1 1 mode float
 
 // Let Kwm listen for hotkeys
 kwmc config hotkeys on
