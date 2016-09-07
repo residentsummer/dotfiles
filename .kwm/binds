@@ -63,9 +63,9 @@ kwmc bindsym prefix-3 tree restore 3vsp
 // kwmc bindsym cmd+alt+ctrl-k window -mk north wrap
 
 // Give Focus To Screen
-// kwmc bindsym cmd+alt-1 display -f 0
-// kwmc bindsym cmd+alt-2 display -f 1
-// kwmc bindsym cmd+alt-3 display -f 2
+kwmc bindsym cmd+alt-1 display -f 0
+kwmc bindsym cmd+alt-2 display -f 1
+kwmc bindsym cmd+alt-3 display -f 2
 
 // Pseudo containers
 // kwmc bindsym cmd+ctrl+alt-p tree -pseudo create
@@ -83,9 +83,9 @@ kwmc bindsym prefix-3 tree restore 3vsp
 // kwmc bindsym ctrl+shift-x window -m mark
 
 // Move Focused Window To Screen
-// kwmc bindsym ctrl+alt-1 window -m display 0
-// kwmc bindsym ctrl+alt-2 window -m display 1
-// kwmc bindsym ctrl+alt-3 window -m display 2
+kwmc bindsym ctrl+alt-1 window -m display 0
+kwmc bindsym ctrl+alt-2 window -m display 1
+kwmc bindsym ctrl+alt-3 window -m display 2
 
 // Increase Container Gaps
 // kwmc bindsym prefix-x space -g increase horizontal
