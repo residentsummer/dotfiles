@@ -38,6 +38,8 @@ values."
      auto-completion
      evil-commentary
      git
+     cscope
+     semantic
      restclient
      syntax-checking
      version-control
