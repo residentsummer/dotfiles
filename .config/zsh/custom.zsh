@@ -1,5 +1,8 @@
 # Some personal shell customizations
 
+# Disable special chars escaping when pasting URL into quotes
+zstyle :bracketed-paste-magic paste-init backward-extend-paste
+
 mkcd () {
     mkdir -p $1
     cd $1
