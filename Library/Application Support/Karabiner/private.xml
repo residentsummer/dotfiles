@@ -1,5 +1,26 @@
 <?xml version="1.0"?>
 <root>
+    <devicevendordef>
+      <vendorname>Leopold</vendorname>
+      <vendorid>0x04b4</vendorid>
+    </devicevendordef>
+
+    <deviceproductdef>
+      <productname>FC700RT</productname>
+      <productid>0x0101</productid>
+    </deviceproductdef>
+
+    <item>
+      <name>Leopold FC700RT fixes</name>
+
+      <item>
+        <name>Change Insert (Help) to Backslash</name>
+        <identifier>remap.leopold_help2backslash</identifier>
+        <device_only>DeviceVendor::Leopold, DeviceProduct::FC700RT</device_only>
+        <autogen>__KeyToKey__ KeyCode::HELP, KeyCode::BACKSLASH</autogen>
+      </item>
+    </item>
+
     <item>
       <name>Disable Quit Application shortcut in Chrome</name>
       <identifier>remap.app_google_chrome_disable_quit_app</identifier>
