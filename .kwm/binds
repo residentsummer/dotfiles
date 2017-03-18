@@ -74,10 +74,10 @@ kwmc bindsym cmd+alt-3 display -f 2
 // kwmc bindsym ctrl+alt-n window -s next
 
 // Detach Focused Window And Reinsert In Direction
-// kwmc bindsym ctrl+shift-k window -m north
-// kwmc bindsym ctrl+shift-l window -m east
-// kwmc bindsym ctrl+shift-j window -m south
-// kwmc bindsym ctrl+shift-h window -m west
+kwmc bindsym ctrl+shift-k window -m north
+kwmc bindsym ctrl+shift-l window -m east
+kwmc bindsym ctrl+shift-j window -m south
+kwmc bindsym ctrl+shift-h window -m west
 
 // Detach Marked Window And Reinsert At Focused Window
 // kwmc bindsym ctrl+shift-x window -m mark
