@@ -230,6 +230,12 @@ by modifying its syntax table."
   (dolist (char (string-to-list char-string))
     (modify-syntax-entry char "w")))
 
+(defun repl-ns-jump ()
+  "Jump to repl, setting ns to current buffer's"
+  (interactive)
+  (cider-repl-set-ns (cider-current-ns))
+  (cider-switch-to-repl-buffer))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
@@ -268,6 +274,13 @@ layers configuration. You are free to put any user code."
   (evil-define-key 'insert company-mode-map
     (kbd "C-n") 'company-select-next
     (kbd "C-p") 'company-select-previous)
+  ;; Smart parens bindinds for clojure
+  (evil-define-key '(normal insert) clojure-mode-map
+    (kbd "C-.") 'sp-forward-slurp-sexp
+    (kbd "C-,") 'sp-forward-barf-sexp
+    (kbd "s-.") 'sp-backward-slurp-sexp
+    (kbd "s-,") 'sp-backward-barf-sexp)
+  (evil-leader/set-key-for-mode 'clojure-mode "," 'repl-ns-jump)
   ;; Move PATH configuration to host-specific file?
   (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
   (setq exec-path (cons "/usr/local/bin" exec-path))
@@ -275,6 +288,9 @@ layers configuration. You are free to put any user code."
   (add-hook 'python-mode-hook
    (lambda ()
      (evil-add-word-constituents "_")))
+  (add-hook 'clojure-mode-hook
+   (lambda ()
+     (evil-add-word-constituents ":/-*!")))
   (setq
    flycheck-check-syntax-automatically
    '(save new-line mode-enabled)
