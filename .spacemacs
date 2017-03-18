@@ -25,7 +25,7 @@ values."
      ;; ----------------------------------------------------------------
      better-defaults
      (evil-snipe :variables
-                 ; Like vim-sneak
+                 ;; Like vim-sneak
                  evil-snipe-repeat-keys t
                  evil-snipe-scope 'visible
                  evil-snipe-repeat-scope 'whole-visible
@@ -204,7 +204,7 @@ user code."
 	(setq
    color-identifiers:min-color-saturation 0.3
    color-identifiers:num-colors 25
-   ; This makes spacemaces look like my cross of xoria and wombat
+   ;; This makes spacemaces look like my cross of xoria and wombat
    spacemacs-theme-custom-colors
    '((bg1 . "#242424")
      (bg2 . "#202020")
@@ -242,7 +242,7 @@ layers configuration. You are free to put any user code."
   (set-face-attribute
    'evil-search-highlight-persist-highlight-face
    nil :background "#ff00ff")
-  ; Bindings
+  ;; Bindings
   (evil-leader/set-key
     "SPC" 'evil-switch-to-windows-last-buffer
     "w" 'evil-write)
@@ -256,32 +256,31 @@ layers configuration. You are free to put any user code."
   (evil-define-key 'normal evil-commentary-mode-map
     "\\y" 'evil-commentary-yank-line
     "\\\\" 'evil-commentary-line)
-  (setq
-    ; Who needs mappings starting with Esc?
-    evil-esc-delay 0)
-  ; Don't pop completion menu here and there
+  ;; Who needs mappings starting with Esc?
+  (setq evil-esc-delay 0)
+  ;; Don't pop completion menu here and there
   (setq company-idle-delay nil)
   (define-key evil-insert-state-map
     (kbd "TAB") 'company-indent-or-complete-common)
-  ; Replace evil completion with company, preserving bindings
+  ;; Replace evil completion with company, preserving bindings
   (define-key evil-insert-state-map (kbd "C-n") nil)
   (define-key evil-insert-state-map (kbd "C-p") nil)
   (evil-define-key 'insert company-mode-map
     (kbd "C-n") 'company-select-next
     (kbd "C-p") 'company-select-previous)
-  ; Move PATH configuration to host-specific file?
+  ;; Move PATH configuration to host-specific file?
   (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
   (setq exec-path (cons "/usr/local/bin" exec-path))
-  ; _ is a word symbol in python
+  ;; Add language-specific chars to word matcher
   (add-hook 'python-mode-hook
    (lambda ()
      (evil-add-word-constituents "_")))
   (setq
    flycheck-check-syntax-automatically
    '(save new-line mode-enabled)
-   ; Show ids for disbling 'em quickly :)
+   ;; Show ids for disbling 'em quickly :)
    flycheck-pylint-use-symbolic-id nil)
-  ; Higlight unwanted whitespace
+  ;; Higlight unwanted whitespace
   (setq
    whitespace-style '(face trailing tab-mark)
    whitespace-display-mapping
@@ -293,7 +292,7 @@ layers configuration. You are free to put any user code."
      (tab-mark   \t   [\xBB \t] [\\ \t]) ; tab
      (space-mark \    [\xB7]    [.])     ; space
      (space-mark \xA0 [\xA4]    [_])))   ; hard space
-  ; Use magit in fullscreen
+  ;; Use magit in fullscreen
   (defadvice magit-status (around magit-fullscreen activate)
     (window-configuration-to-register :magit-fullscreen)
     ad-do-it
