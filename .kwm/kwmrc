@@ -38,15 +38,21 @@ kwmc config gap 3 3
 
 // Default tiling mode for Kwm (bsp | monocle | float)
 kwmc config tiling monocle
-// terminals
-kwmc config space 0 1 mode bsp
-// editors
-kwmc config space 0 3 mode bsp
-// floating space
+// Screen 0
+// 0.1 - 1 - terminals
+// 0.2 - 2 - messaging
+// 0.4 - e - editors
+// 0.4 - w - web
+// 0.5 - f - misc (float)
 kwmc config space 0 5 mode float
+// 0.6 - t - itunes
+// 0.7 - d - todos/notes
+kwmc config space 0 7 mode bsp
+// Screen 1
 kwmc config space 1 1 mode float
+kwmc config space 1 2 mode bsp
 
-// Let Kwm listen for hotkeys
+// Let kwm listen for hotkeys
 kwmc config hotkeys on
 
 // Automatically float windows that fail to resize
