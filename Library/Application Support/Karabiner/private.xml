@@ -22,6 +22,21 @@
     </item>
 
     <item>
+      <name>Quit processes in Actvity Monitor with "delete"</name>
+
+      <item>
+        <name>Quit processes in Actvity Monitor with "delete"</name>
+        <identifier>remap.app_actmon_delete_to_kill</identifier>
+        <only> Activity_Monitor</only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::DELETE, ModifierFlag::NONE,
+          KeyCode::Q, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+        </autogen>
+      </item>
+    </item>
+
+    <item>
       <name>Disable Quit Application shortcut in Chrome</name>
       <identifier>remap.app_google_chrome_disable_quit_app</identifier>
       <only>GOOGLE_CHROME</only>
