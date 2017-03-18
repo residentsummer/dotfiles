@@ -299,7 +299,8 @@ layers configuration. You are free to put any user code."
     (delete-other-windows))
   (defadvice magit-mode-quit-window (after magit-fullscreen activate)
     (jump-to-register :magit-fullscreen))
-)
+  ;; Start scrolling before cursor hits the edges
+  (setq scroll-margin 10))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
