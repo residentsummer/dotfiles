@@ -1,8 +1,11 @@
 [CONFIG]
 
 # C0111 no docstring
+# C0330 wrong hanging indentation
 # R0903 too few public methods
-disable=C0111,R0903
+# R0914 too many local variables
+# E0401 unable to import
+disable=C0111,R0903,R0914,C0330,E0401
 
 # List of builtins function names that should not be used, separated by a comma
 bad-functions=input
