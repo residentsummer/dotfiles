@@ -46,7 +46,7 @@ values."
      ;; Langu
      (clojure :variables clojure-enable-fancify-symbols t)
      emacs-lisp
-     dockerfile
+     docker
      markdown
      python
      )
