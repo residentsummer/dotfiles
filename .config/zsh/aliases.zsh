@@ -12,6 +12,9 @@ alias dkr='docker run -it --rm'
 alias dex='docker exec -it'
 alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}"'
 
+alias gst='g st'
+alias gdw='g dw'
+
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then
     alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport'

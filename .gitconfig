@@ -18,7 +18,7 @@
 	trustExitCode = true
 [alias]
 	cm = commit -m
-	st = status
+	st = status --short --branch
 	co = checkout
 	cb = checkout -b
 	br = branch
@@ -37,3 +37,4 @@
 	rems = remote -v
 	unstage = reset --
 	staged = diff --cached
+	dw = diff -w -b --ignore-space-at-eol --ignore-blank-lines
