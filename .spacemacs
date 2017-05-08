@@ -33,6 +33,7 @@ values."
                  evil-snipe-enable-incremental-highlight t)
      osx
      colors
+     command-log
      (spell-checking :variables spell-checking-enable-by-default nil)
      ;; Prog
      auto-completion
@@ -46,9 +47,15 @@ values."
      ;; Langu
      (clojure :variables clojure-enable-fancify-symbols t)
      emacs-lisp
-     docker
      markdown
+     ansible
+     haskell
+     docker
      python
+     nginx
+     ruby
+     sql
+     csv
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
