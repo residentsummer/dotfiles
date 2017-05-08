@@ -421,7 +421,7 @@ let g:startify_skiplist = [
             \ ]
 "}}}
 "{{{ hardtime
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 let g:hardtime_ignore_quickfix = 1
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
