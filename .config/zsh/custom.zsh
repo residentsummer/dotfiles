@@ -14,3 +14,7 @@ remux () {
     ssh $host -t -C "tmux $@ attach -t remux || tmux $@ new -s remux"
 }
 
+xml_pp () {
+    xmllint --noent --encode UTF-8 --format -
+}
+
