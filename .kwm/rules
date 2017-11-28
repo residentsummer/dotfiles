@@ -14,5 +14,6 @@ kwmc rule owner="Emacs" properties={role="AXStandardWindow"}
 
 kwmc rule owner="Slack" name="Slack call" properties={float="true"}
 kwmc rule owner="Finder" name="Copy" properties={float="true"}
+kwmc rule owner="Finder" name="Trash" properties={float="true" role="AXWindow"}
 kwmc rule owner="Karabiner" properties={float="true"}
 
