@@ -26,6 +26,7 @@
 	ri = rebase -i --autosquash
 	ai = add -i
 	lg = log --graph --oneline --decorate
+	l5 = log --graph --oneline --decorate -5
 	ml = merge --no-ff --log --no-commit
 	mlc = merge --no-ff --log
 	cp = cherry-pick
