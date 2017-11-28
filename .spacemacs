@@ -65,7 +65,7 @@ values."
      ansible
      haskell
      docker
-     python
+     (python :variables python-enable-yapf-format-on-save t)
      nginx
      ruby
      sql
