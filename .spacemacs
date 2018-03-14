@@ -59,7 +59,9 @@ values."
      syntax-checking
      version-control
      ;; Langu
-     (clojure :variables clojure-enable-fancify-symbols t)
+     (clojure :variables
+              clojure-enable-fancify-symbols t
+              cider-mode-line-show-connection nil)
      emacs-lisp
      markdown
      ansible
