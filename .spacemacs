@@ -412,7 +412,9 @@ layers configuration. You are free to put any user code."
    flycheck-check-syntax-automatically
    '(save new-line mode-enabled)
    ;; Show ids for disbling 'em quickly :)
-   flycheck-pylint-use-symbolic-id nil)
+   flycheck-pylint-use-symbolic-id nil
+   ;; Quick error navigation
+   flycheck-navigation-minimum-level 'error)
   ;; Higlight unwanted whitespace
   (setq
    whitespace-style '(face trailing tab-mark)
