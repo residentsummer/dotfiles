@@ -453,6 +453,12 @@ if has("gui_running")
     au vimrc Syntax * RainbowParenthesesLoadSquare
     au vimrc Syntax * RainbowParenthesesLoadBraces
 elseif &t_Co > 2
+  " vim hardcodes background color erase even if the terminfo file does
+  " not contain bce (not to mention that libvte based terminals
+  " incorrectly contain bce in their terminfo files). This causes
+  " incorrect background rendering when using a color theme with a
+  " background color.
+  let &t_ut=''
   if &t_Co == 256
     colo xoria256
   else
