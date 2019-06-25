@@ -11,7 +11,7 @@ mkcd () {
 remux () {
     host=$1
     shift
-    ssh $host -t -C "tmux $@ attach -t remux || tmux $@ new -s remux"
+    ssh $host -t -C "tmux $@ attach -t remux || tmux -u $@ new -s remux"
 }
 
 xml_pp () {
