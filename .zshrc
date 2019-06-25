@@ -6,7 +6,7 @@
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # Good themes: nicoulaj
-ZSH_THEME="shifer"
+# Set it in ~/$ZSH_CUSTOM/local-env.sh
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -57,4 +57,3 @@ plugins=(git osx fancy-ctrl-z docker)
 source $ZSH_CUSTOM/env.sh
 source $ZSH/oh-my-zsh.sh
 # $ZSH_CUSTOM/*.zsh are autoloaded
-
