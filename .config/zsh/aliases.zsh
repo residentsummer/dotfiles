@@ -5,6 +5,12 @@ alias ec='emacsclient -nq'
 
 alias -g V="| vim -R -"
 alias -g G="| grep"
+alias -g J="| json_pp"
+
+alias gl='g l5'
+alias gst='g st'
+alias gdw='g dw'
+alias gdc='g diff --cached'
 
 alias dk=docker
 alias dc=docker-compose
@@ -12,8 +18,6 @@ alias dkr='docker run -it --rm'
 alias dex='docker exec -it'
 alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}"'
 
-alias gst='g st'
-alias gdw='g dw'
 
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then
