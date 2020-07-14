@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.pyenv/shims:/usr/local/bin:$PATH
 export EDITOR=vim
 
 export PYTHONSTARTUP="$HOME/.pyrc"
