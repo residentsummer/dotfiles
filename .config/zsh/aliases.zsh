@@ -13,8 +13,7 @@ alias gdw='g dw'
 alias gdc='g diff --cached'
 
 alias dk=docker
-alias kc=kubectl
-alias kn=kubens
+alias kns=kubens
 alias dc=docker-compose
 alias dkr='docker run -it --rm'
 alias dke='docker exec -it'
@@ -23,14 +22,47 @@ alias dkl='docker logs -f --tail=100'
 alias kcl='kubectl logs -f --tail=100'
 alias kce='kubectl exec -it'
 
+# Usage: by-host kla channel
+by-host () {
+    $@ --sort-by=.spec.nodeName
+}
+
+by-ns () {
+    $@ --sort-by=.metadata.namespace
+}
+
+by-age () {
+    $@ --sort-by=.metadata.creationTimestamp
+}
+
+DEFAULT_SORT='--sort-by=.metadata.creationTimestamp'
+
+# Plain alias won't work with funcs below.
+# e.g. `by-age kc get pods` will fail
+kc () {
+    kubectl $@
+}
+
+kca () {
+    local verb="$1"
+    shift
+    kubectl $verb --all-namespaces $@
+}
+
+kcy () {
+    kubectl get -o yaml $@
+}
+
 kla () {
-    kubectl get pods -o wide --all-namespaces -l app=$1
+    local label="$1"
+    shift
+    kca get pods -o wide $DEFAULT_SORT -l app=$label $@
 }
 
 klh () {
     local node="$1"
     shift
-    kubectl get pods --all-namespaces --field-selector spec.nodeName=$node $@
+    kca get pods $DEFAULT_SORT --field-selector spec.nodeName=$node $@
 }
 
 klp () {
@@ -38,7 +70,7 @@ klp () {
     if [[ -n "$1" ]]; then
         args="-n $1"
     fi
-    kubectl get pods -o wide ${=args}
+    kubectl get pods -o wide $DEFAULT_SORT ${=args}
 }
 
 kln () {
