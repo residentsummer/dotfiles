@@ -1,0 +1,187 @@
+#!/usr/bin/env bb
+; -*- mode: Clojure -*-
+; vim: set ft=clojure :
+
+(require '[cheshire.core :as json])
+
+;; Script support
+
+(defmulti command
+  (fn [cmd & _] (keyword cmd))
+  :default :bad-command)
+
+(def docs (atom (array-map)))
+(defmacro defcommand [key doc argspec & forms]
+  (swap! docs assoc (name key) doc)
+  `(defmethod command ~key [_ ~@argspec] ~@forms))
+
+(defmethod command :bad-command [cmd & args]
+  (println "command not recognized:" cmd)
+  (command :help))
+
+;; Commands
+
+(declare yabai query query-managed-windows get-layout set-layout key->nav map-by)
+
+(defn default-layout-for-space-on-display
+  [label display-frame]
+  (case label
+    ("flt" "mus")
+    "float"
+
+    ("tty" "ed" "im" "web" "txt")
+    (if (and (> (:w display-frame) 1440)
+             (> (:h display-frame) 900))
+      "bsp" "monocle")
+
+    "float"))
+
+(defcommand :hjkl "<key> - perform focus action WRT current layout"
+  [key]
+  (let [nav (key->nav key)
+        success (yabai "-m" "window" "--focus" nav)]
+    (if (not success)
+      (case nav
+        "prev" (yabai "-m" "window" "--focus" "last")
+        "next" (yabai "-m" "window" "--focus" "first")
+        nil))))
+
+(defcommand :get-layout "- print current space layout"
+  [& [space-id]]
+  (let [space (apply query (filter some? ["--spaces" "--space" space-id]))]
+    (println (get-layout space))))
+
+(defcommand :set-layout "<layout> - set current space layout"
+  [target & [space-id]]
+  (let [space (apply query (filter some? ["--spaces" "--space" space-id]))
+        current (get-layout space)]
+    (when (not (= current target))
+      (set-layout target space))))
+
+(defcommand :configure-spaces "- set default layouts for all spaces"
+  []
+  (let [displays (map-by :index (query "--displays"))]
+    (doseq [space (query "--spaces")]
+      (let [display (get displays (:display space))
+            target-layout (default-layout-for-space-on-display
+                           (:label space) (:frame display))
+            current-layout (get-layout space)]
+        (when (not (= current-layout target-layout))
+          (set-layout target-layout space))))))
+
+(def display-events-to-adjust-layouts
+  ["display_added" "display_removed"
+   "display_moved" "display_resized"
+   "system_woke"])
+
+(defcommand :track-display-changes "- adds a callback to react on displays add/(re)move/resize"
+  []
+  (doseq [event display-events-to-adjust-layouts]
+    (yabai "-m" "signal" "--add"
+           (str "event=" event)
+           (str "label=yb_handle_" event)
+           (str "action=" *file* " configure-spaces"))))
+
+(defcommand :restart "- restart yabai service"
+  []
+  (let [uid (:out (shell/sh "id" "-u"))]
+    (shell/sh "launchctl" "kickstart" "-k" (str "gui/" uid "/homebrew.mxcl.yabai"))))
+
+(defcommand :help "- print usage"
+  []
+  (println "yabai helper")
+  (doseq [[k v] @docs]
+    (println "   " k v)))
+
+;; Support functions
+
+(defn get-layout
+  ([] (get-layout (query "--spaces" "--space")))
+  ([space]
+   (if (= "float" (:type space))
+     "float"
+     (let [stacks (->> (query-managed-windows space)
+                       (map :stacked-with)
+                       distinct)]
+       (if (and (= 1 (count stacks))
+                (not (= 0 (first stacks))))
+         "monocle"
+         "bsp")))))
+
+(defn map-by [key coll]
+  (->> coll
+       (map #(vector (key %) %))
+       (into {})))
+
+(defn window-is-managed [window]
+  (= 0 (:floating window) (:minimized window)))
+
+(defn query-managed-windows
+  ([]
+   (query-managed-windows nil))
+  ([space]
+   (->> (apply query (filter some? ["--windows" "--space" (:index space)]))
+        (filter window-is-managed))))
+
+(defn set-layout
+  ([target]
+   (set-layout target (query "--spaces" "--space")))
+  ([target space]
+   (let [focused (if (= 1 (:focused space))
+                   (query "--windows" "--window"))]
+     (case target
+       "bsp"
+       (do
+        (yabai "-m" "space" (:index space) "--layout" "bsp")
+        (yabai "-m" "window" (:first-window space) "--destackify")
+        (when focused
+          (yabai "-m" "window" "--focus" (:id focused))))
+
+       "monocle"
+       (do
+         (yabai "-m" "space" (:index space) "--layout" "bsp")
+         (let [to-stack (query-managed-windows space)
+               root-id (:id (if (some-> focused window-is-managed)
+                              focused (first to-stack)))]
+           (when (seq to-stack)
+             (yabai "-m" "window" root-id "--stackify")
+             (doseq [win-id (map :id to-stack)
+                     :when (not (= root-id win-id))]
+               (yabai "-m" "window" win-id "--warp" root-id))
+             (when focused
+               (yabai "-m" "window" "--focus" (:id focused))))))
+
+       (yabai "-m" "space" (:index space) "--layout" target)))))
+
+(defn key->nav [key]
+  (case key
+    "j" "south"
+    "k" "north"
+    (if (= "bsp" (get-layout))
+      (case key
+        "h" "west"
+        "l" "east")
+      (case key
+        "h" "prev"
+        "l" "next"))))
+
+(defn yabai [& args]
+  (let [res (apply shell/sh "yabai" (map str args))]
+    (if (= 0 (:exit res))
+      (or (:out res) true)
+      (do
+        (apply println "error while running yabai" args)
+        (print (:err res))
+        false))))
+
+(defn query [& args]
+  (some->
+   (apply yabai "-m" "query" args)
+   (json/parse-string true)))
+
+;; -main
+
+(apply command (or *command-line-args* [:help]))
+
+;; Suppress unwanted output
+nil

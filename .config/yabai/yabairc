@@ -1,0 +1,48 @@
+#!/usr/bin/env sh
+yabai -m config debug_output on
+
+# bar settings
+
+# global settings
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autofocus
+yabai -m config window_placement             second_child
+yabai -m config window_topmost               off
+yabai -m config window_opacity               off
+yabai -m config window_opacity_duration      0.0
+yabai -m config window_shadow                on
+yabai -m config external_bar                 all:26:0
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.90
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
+yabai -m config mouse_modifier               fn
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+
+# general space settings
+yabai -m config layout                       bsp
+yabai -m config top_padding                  3
+yabai -m config bottom_padding               3
+yabai -m config left_padding                 3
+yabai -m config right_padding                3
+yabai -m config window_gap                   3
+
+# specific space settings
+yabai -m space 1 --label tty
+yabai -m space 2 --label im
+yabai -m space 3 --label ed
+yabai -m space 4 --label web
+yabai -m space 5 --label flt
+# yabai -m space flt --layout float
+yabai -m space 6 --label mus
+# yabai -m space mus --layout float
+yabai -m space 7 --label txt
+
+$HOME/Library/bin/yb configure-spaces
+$HOME/Library/bin/yb track-display-changes
+
+# Rules
+yabai -m rule --add label=firefox-save-dialog app=Firefox title=Opening.* layer=above manage=off
+
+echo "yabai configuration loaded.."
