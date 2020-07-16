@@ -568,7 +568,6 @@ before packages are loaded."
    rainbow-delimiters-mode t)
   ;; Spelling
   (setq ispell-program-name "hunspell")
-  (setenv "LANG" "en_US")
   ;; I don't use layouts
   (setq
    persp-init-new-frame-behaviour-override (lambda (&rest _)))
@@ -606,10 +605,6 @@ before packages are loaded."
    (kbd "s-.") 'sp-backward-slurp-sexp
    (kbd "s-,") 'sp-backward-barf-sexp)
   (evil-leader/set-key-for-mode 'clojure-mode "," 'repl-ns-jump)
-  ;; Move PATH configuration to host-specific file?
-  (setenv "LANG" "")
-  (setenv "PATH" (concat (getenv "HOME") "/.pyenv/shims:/usr/local/bin:" (getenv "PATH")))
-  (setq exec-path (cons "/usr/local/bin" exec-path))
   ;; Add language-specific chars to word matcher
   (add-hook 'python-mode-hook
             (lambda ()
