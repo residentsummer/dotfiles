@@ -188,7 +188,9 @@ It should only modify the values of Spacemacs settings."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style '(vim :variables
+                                    vim-style-remap-Y-to-y$ t
+                                    vim-style-retain-visual-state-on-shift t)
 
    ;; If non-nil show the version string in the Spacemacs buffer. It will
    ;; appear as (spacemacs version)@(emacs version)
@@ -623,6 +625,7 @@ before packages are loaded."
    flycheck-pylint-use-symbolic-id nil
    ;; Quick error navigation
    flycheck-navigation-minimum-level 'error)
+  (set-face-background 'evil-ex-lazy-highlight "#ff00ff")
   ;; Higlight unwanted whitespace
   (setq
    whitespace-style '(face trailing tab-mark)
@@ -653,6 +656,7 @@ before packages are loaded."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(magit-diff-use-overlays nil)
+ '(magit-section-visibility-indicator nil)
  '(magit-merge-arguments (quote ("--no-ff"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
