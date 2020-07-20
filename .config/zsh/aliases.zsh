@@ -67,18 +67,20 @@ klh () {
 
 klp () {
     local args=''
-    if [[ -n "$1" ]]; then
+    if [[ -n "$1" && "$1" != --* ]]; then
         args="-n $1"
+        shift
     fi
-    kubectl get pods -o wide $DEFAULT_SORT ${=args}
+    kubectl get pods -o wide $DEFAULT_SORT ${=args} $@
 }
 
 kln () {
     local args=''
-    if [[ -n "$1" ]]; then
+    if [[ -n "$1" && "$1" != --* ]]; then
         args="-n $1"
+        shift
     fi
-    kubectl get svc,deploy,ds,sts ${=args}
+    kubectl get svc,deploy,ds,sts ${=args} $@
 }
 
 # Restart pods, associated with the deployment "foo" [in "bar" ns]:
