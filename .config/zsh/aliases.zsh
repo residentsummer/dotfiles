@@ -21,19 +21,23 @@ alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}"'
 alias dkl='docker logs -f --tail=100'
 alias kcl='kubectl logs -f --tail=100'
 alias kce='kubectl exec -it'
+alias kcy='kubectl get -o yaml'
 
 # Usage: by-host kla channel
 by-host () {
     $@ --sort-by=.spec.nodeName
 }
+compdef _precommand by-host
 
 by-ns () {
     $@ --sort-by=.metadata.namespace
 }
+compdef _precommand by-ns
 
 by-age () {
     $@ --sort-by=.metadata.creationTimestamp
 }
+compdef _precommand by-age
 
 DEFAULT_SORT='--sort-by=.metadata.creationTimestamp'
 
@@ -49,9 +53,16 @@ kca () {
     kubectl $verb --all-namespaces $@
 }
 
-kcy () {
-    kubectl get -o yaml $@
+_kc () {
+    if ! type __start_kubectl >/dev/null 2>&1; then
+        _kubectl
+    fi
+
+    _bash_complete -o default -F __start_kubectl
 }
+
+compdef '_kc' kc
+compdef '_kc' kca
 
 kla () {
     local label="$1"
@@ -65,6 +76,11 @@ klh () {
     kca get pods $DEFAULT_SORT --field-selector spec.nodeName=$node $@
 }
 
+_klh () {
+    _arguments "1: :($(kubectl get nodes -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}'))"
+}
+compdef '_klh' klh
+
 klp () {
     local args=''
     if [[ -n "$1" && "$1" != --* ]]; then
@@ -73,6 +89,7 @@ klp () {
     fi
     kubectl get pods -o wide $DEFAULT_SORT ${=args} $@
 }
+compdef '_kubens' klp
 
 kln () {
     local args=''
@@ -82,6 +99,7 @@ kln () {
     fi
     kubectl get svc,deploy,ds,sts ${=args} $@
 }
+compdef '_kubens' kln
 
 # Restart pods, associated with the deployment "foo" [in "bar" ns]:
 #
@@ -97,6 +115,10 @@ krd () {
 
     kubectl patch deploy "$deploy" -p "$patch_str" $@
 }
+_krd () {
+    _arguments "1: :($(kubectl get deploy -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}'))"
+}
+compdef '_krd' krd
 
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then
