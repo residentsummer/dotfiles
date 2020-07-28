@@ -23,56 +23,34 @@ alias kcl='kubectl logs -f --tail=100'
 alias kce='kubectl exec -it'
 alias kcy='kubectl get -o yaml'
 
-# Usage: by-host kla channel
-by-host () {
-    $@ --sort-by=.spec.nodeName
-}
-compdef _precommand by-host
-
-by-ns () {
-    $@ --sort-by=.metadata.namespace
-}
-compdef _precommand by-ns
-
-by-age () {
-    $@ --sort-by=.metadata.creationTimestamp
-}
-compdef _precommand by-age
+# Usage: kla channel by-host
+alias -g by-host='--sort-by=.spec.nodeName'
+alias -g by-age='--sort-by=.metadata.creationTimestamp'
+alias -g by-ns='--sort-by=.metadata.namespace'
 
 DEFAULT_SORT='--sort-by=.metadata.creationTimestamp'
 
-# Plain alias won't work with funcs below.
-# e.g. `by-age kc get pods` will fail
-kc () {
-    kubectl $@
-}
-
 kca () {
-    local verb="$1"
-    shift
+    local verb="$1"; shift
     kubectl $verb --all-namespaces $@
 }
 
-_kc () {
+_kca () {
     if ! type __start_kubectl >/dev/null 2>&1; then
         _kubectl
     fi
 
     _bash_complete -o default -F __start_kubectl
 }
-
-compdef '_kc' kc
-compdef '_kc' kca
+compdef '_kca' kca
 
 kla () {
-    local label="$1"
-    shift
+    local label="$1"; shift
     kca get pods -o wide $DEFAULT_SORT -l app=$label $@
 }
 
 klh () {
-    local node="$1"
-    shift
+    local node="$1"; shift
     kca get pods $DEFAULT_SORT --field-selector spec.nodeName=$node $@
 }
 
