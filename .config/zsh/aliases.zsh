@@ -13,6 +13,7 @@ alias gdw='g dw'
 alias gdc='g diff --cached'
 
 alias dk=docker
+alias kc=kubectl
 alias kns=kubens
 alias dc=docker-compose
 alias dkr='docker run -it --rm'
