@@ -24,10 +24,10 @@ alias kcl='kubectl logs -f --tail=100'
 alias kce='kubectl exec -it'
 alias kcy='kubectl get -o yaml'
 
-# Usage: kla channel by-host
-alias -g by-host='--sort-by=.spec.nodeName'
-alias -g by-age='--sort-by=.metadata.creationTimestamp'
-alias -g by-ns='--sort-by=.metadata.namespace'
+# Usage: kla channel --by-host
+alias -g -- --by-host='--sort-by=.spec.nodeName'
+alias -g -- --by-age='--sort-by=.metadata.creationTimestamp'
+alias -g -- --by-ns='--sort-by=.metadata.namespace'
 
 DEFAULT_SORT='--sort-by=.metadata.creationTimestamp'
 
@@ -62,7 +62,7 @@ compdef '_klh' klh
 
 klp () {
     local args=''
-    if [[ -n "$1" && "$1" != --* ]]; then
+    if [[ -n "$1" && "$1" != -* ]]; then
         args="-n $1"
         shift
     fi
@@ -72,7 +72,7 @@ compdef '_kubens' klp
 
 kln () {
     local args=''
-    if [[ -n "$1" && "$1" != --* ]]; then
+    if [[ -n "$1" && "$1" != -* ]]; then
         args="-n $1"
         shift
     fi
