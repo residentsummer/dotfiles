@@ -35,7 +35,6 @@ kca () {
     local verb="$1"; shift
     kubectl $verb --all-namespaces $@
 }
-
 _kca () {
     if ! type __start_kubectl >/dev/null 2>&1; then
         _kubectl
@@ -52,9 +51,8 @@ kla () {
 
 klh () {
     local node="$1"; shift
-    kca get pods $DEFAULT_SORT --field-selector spec.nodeName=$node $@
+    kca get pods --field-selector spec.nodeName=$node $@
 }
-
 _klh () {
     _arguments "1: :($(kubectl get nodes -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}'))"
 }
