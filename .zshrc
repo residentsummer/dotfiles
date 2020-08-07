@@ -72,7 +72,7 @@ COMPLETION_WAITING_DOTS="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$HOME/.config/zsh
+ZSH_CUSTOM=$HOME/.config/zsh/custom
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -88,11 +88,8 @@ ZSH_DISABLE_COMPFIX="true"
 
 source $ZSH_CUSTOM/env.sh
 source $ZSH/oh-my-zsh.sh
-# $ZSH_CUSTOM/*.zsh are autoloaded
+# $ZSH_CUSTOM/*.zsh are autoloaded here
 
 # Uncomment to profile startup time
 # zprof
 # zmodload -u zsh/zprof
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
