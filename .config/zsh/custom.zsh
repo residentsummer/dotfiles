@@ -8,6 +8,12 @@ mkcd () {
     cd $1
 }
 
+# Usage: ps aux | preserve-header grep Emacs
+preserve-header () {
+    (read -r; printf "%s\n" "$REPLY"; "$@")
+}
+compdef _precommand preserve-header
+
 remux () {
     host=$1
     shift
