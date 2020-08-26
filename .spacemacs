@@ -620,7 +620,6 @@ before packages are loaded."
   (setq
    flycheck-check-syntax-automatically
    '(save new-line mode-enabled)
-   flycheck-python-pylint-executable "pylint"
    ;; Show ids for disbling 'em quickly :)
    flycheck-pylint-use-symbolic-id nil
    ;; Quick error navigation
