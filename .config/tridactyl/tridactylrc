@@ -1,0 +1,86 @@
+" General Settings
+set configversion 2.0
+set update.lastchecktime 1597570797725
+set update.lastnaggedversion 1.20.0
+set updatenaglastversion 1.17.1
+
+set hintuppercase false
+set tabopencontaineraware true
+set tabopenpos last
+set theme shydactyl
+
+" Cyr
+set keytranslatemap.А F
+set keytranslatemap.Б <
+set keytranslatemap.В D
+set keytranslatemap.Г U
+set keytranslatemap.Д L
+set keytranslatemap.Е T
+set keytranslatemap.Ж :
+set keytranslatemap.З P
+set keytranslatemap.И B
+set keytranslatemap.Й Q
+set keytranslatemap.К R
+set keytranslatemap.Л K
+set keytranslatemap.М V
+set keytranslatemap.Н Y
+set keytranslatemap.О J
+set keytranslatemap.П G
+set keytranslatemap.Р H
+set keytranslatemap.С C
+set keytranslatemap.Т N
+set keytranslatemap.У E
+set keytranslatemap.Ф A
+set keytranslatemap.Х {
+set keytranslatemap.Ц W
+set keytranslatemap.Ч X
+set keytranslatemap.Ш I
+set keytranslatemap.Щ O
+set keytranslatemap.Ъ }
+set keytranslatemap.Ы S
+set keytranslatemap.Ь M
+set keytranslatemap.Э "
+set keytranslatemap.Ю >
+set keytranslatemap.Я Z
+set keytranslatemap.а f
+set keytranslatemap.б ,
+set keytranslatemap.в d
+set keytranslatemap.г u
+set keytranslatemap.д l
+set keytranslatemap.е t
+set keytranslatemap.ж ;
+set keytranslatemap.з p
+set keytranslatemap.и b
+set keytranslatemap.й q
+set keytranslatemap.к r
+set keytranslatemap.л k
+set keytranslatemap.м v
+set keytranslatemap.н y
+set keytranslatemap.о j
+set keytranslatemap.п g
+set keytranslatemap.р h
+set keytranslatemap.с c
+set keytranslatemap.т n
+set keytranslatemap.у e
+set keytranslatemap.ф a
+set keytranslatemap.х [
+set keytranslatemap.ц w
+set keytranslatemap.ч x
+set keytranslatemap.ш i
+set keytranslatemap.щ o
+set keytranslatemap.ъ ]
+set keytranslatemap.ы s
+set keytranslatemap.ь m
+set keytranslatemap.э '
+set keytranslatemap.ю .
+set keytranslatemap.я z
+
+" Binds
+bind F hint -t
+bind J tabnext
+bind K tabprev
+bind O fillcmdline tabopen
+bind go fillcmdline open
+
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl

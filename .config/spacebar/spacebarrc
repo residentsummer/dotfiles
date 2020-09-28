@@ -1,8 +1,9 @@
 #!/usr/bin/env sh
 
 spacebar -m config position           top
-spacebar -m config height             26
-spacebar -m config text_font          "Fira Mono:Regular:12.0"
+spacebar -m config height             22
+# spacebar -m config text_font          "Fira Mono:Regular:12.0"
+spacebar -m config text_font          "FontAwesome:Regular:11.0"
 spacebar -m config background_color   0xff202020
 spacebar -m config foreground_color   0xffa8a8a8
 spacebar -m config space_icon_color   0xff458588
@@ -10,11 +11,11 @@ spacebar -m config power_icon_color   0xffcd950c
 spacebar -m config battery_icon_color 0xffd75f5f
 spacebar -m config dnd_icon_color     0xffa8a8a8
 spacebar -m config clock_icon_color   0xffa8a8a8
-spacebar -m config space_icon_strip   I II III IV V VI VII VIII IX X
+# spacebar -m config space_icon_strip   I II III IV V VI VII VIII IX X
 spacebar -m config space_icon_strip   tty im ed web flt mus txt VIII IX X
 spacebar -m config clock_format       "%d-%m-%y %R"
 
-spacebar -m config icon_font          "FontAwesome:Regular:12.0"
+spacebar -m config icon_font          "FontAwesome:Regular:11.0"
 #spacebar -m config power_icon_strip    
 spacebar -m config power_icon_strip    
 spacebar -m config space_icon         
