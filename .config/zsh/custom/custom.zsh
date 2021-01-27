@@ -10,7 +10,7 @@ mkcd () {
 
 # Usage: ps aux | preserve-header grep Emacs
 preserve-header () {
-    (read -r; printf "%s\n" "$REPLY"; "$@")
+    (read -r; printf "%s\n" "$REPLY"; eval "$@")
 }
 compdef _precommand preserve-header
 
