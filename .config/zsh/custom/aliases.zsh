@@ -78,6 +78,18 @@ kln () {
 }
 compdef '_kubens' kln
 
+kc-get-all () {
+    for res in $(kubectl api-resources --verbs=list --namespaced -o name); do
+        # local out=$(kubectl get --show-kind --ignore-not-found $res)
+        local out=$(kubectl get --ignore-not-found $res)
+        if [[ -n "$out" ]]; then
+            echo "====================" $res "===================="
+            echo "$out"
+            echo
+        fi
+    done
+}
+
 # Show pods, using more than 0.1 core
 khogs () {
     kubectl top pods -A | grep -ve ' \d\{1,2\}m ' | preserve-header sort -k 3 -h -r
