@@ -24,17 +24,19 @@
 (declare yabai query query-managed-windows get-layout set-layout key->nav map-by)
 
 (defn default-layout-for-space-on-display
-  [label display-frame]
+  [label {:keys [frame] :as display}]
   (case label
     ("flt" "mus")
     "float"
 
     ("tty" "ed" "im" "web" "txt")
-    (if (and (> (:w display-frame) 1440)
-             (> (:h display-frame) 900))
+    (if (and (> (:w frame) 1440)
+             (> (:h frame) 900))
       "bsp" "monocle")
 
-    "float"))
+    (if (= (:index display) 1)
+      ;; Fullscreen windows on secondary displays
+      "float" "monocle")))
 
 (defcommand :hjkl "<key> - perform focus action WRT current layout"
   [key]
@@ -64,7 +66,7 @@
     (doseq [space (query "--spaces")]
       (let [display (get displays (:display space))
             target-layout (default-layout-for-space-on-display
-                           (:label space) (:frame display))
+                           (:label space) display)
             current-layout (get-layout space)]
         (when (not (= current-layout target-layout))
           (set-layout target-layout space))))))
