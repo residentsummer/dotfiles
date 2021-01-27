@@ -592,6 +592,9 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " break if wrapped LINES are present)
 " nmap <expr> j (v:count == 0 ? 'gj' : 'j')
 " nmap <expr> k (v:count == 0 ? 'gk' : 'k')
+" Inplace encode/decode base64
+:vnoremap <leader>64 "=system('base64', @")<cr>p
+:noremap <leader>46 viW"=system('base64 --decode', @")<cr>p
 "}}}
 "}}}
 "{{{  Other
