@@ -31,6 +31,15 @@ alias -g -- --by-ns='--sort-by=.metadata.namespace'
 
 DEFAULT_SORT='--sort-by=.metadata.creationTimestamp'
 
+kcld () {
+    local name="$1"; shift
+    kubectl logs -f --tail=100 deploy/$name $@
+}
+_kcld () {
+    _arguments "1: :($(kubectl get deploy -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}'))"
+}
+compdef '_kcld' kcld
+
 kca () {
     local verb="$1"; shift
     kubectl $verb --all-namespaces $@
