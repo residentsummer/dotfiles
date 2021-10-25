@@ -60,7 +60,7 @@ This function should only modify configuration layer settings."
      evil-commentary
      git
      ;; lsp
-     parinfer-local
+     parinfer
      restclient
      ;; semantic
      syntax-checking
@@ -74,6 +74,7 @@ This function should only modify configuration layer settings."
      docker
      elixir
      emacs-lisp
+     go
      haskell
      html
      markdown
@@ -84,6 +85,7 @@ This function should only modify configuration layer settings."
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
+     solidity
      sql)
 
    ;; List of additional packages that will be installed without being
@@ -563,6 +565,16 @@ by modifying its syntax table."
         (if nil ;; (= #'quote (car maps))
             (cdr maps) maps))))
 
+(defun cider-eval-n-tops (n)
+  "Evaluate N top-level forms, starting with the current one."
+  (interactive "P")
+  (save-excursion
+    (goto-char (car (bounds-of-thing-at-point 'defun)))
+    (dotimes (i (or n 2))
+      (let ((start (point))
+            (end (progn (end-of-defun) (point))))
+        (cider-eval-region start end)))))
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -612,7 +624,10 @@ before packages are loaded."
    (kbd "C-,") 'sp-forward-barf-sexp
    (kbd "s-.") 'sp-backward-slurp-sexp
    (kbd "s-,") 'sp-backward-barf-sexp)
-  (evil-leader/set-key-for-mode 'clojure-mode "," 'repl-ns-jump)
+  (evil-leader/set-key-for-mode 'cider-mode "," 'repl-ns-jump)
+  (evil-define-key-in-maps
+   '(normal insert) (clojure-mode-map)
+   (kbd "C-x C-x") 'cider-eval-n-tops)
   ;; Add language-specific chars to word matcher
   (add-hook 'python-mode-hook
             (lambda ()
@@ -623,6 +638,9 @@ before packages are loaded."
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
               (evil-add-word-constituents "/-'")))
+  (add-hook 'c-mode-hook
+            (lambda ()
+              (evil-add-word-constituents "_")))
   (setq
    flycheck-check-syntax-automatically
    '(save new-line mode-enabled)
@@ -631,6 +649,11 @@ before packages are loaded."
    ;; Quick error navigation
    flycheck-navigation-minimum-level 'error)
   (set-face-background 'evil-ex-lazy-highlight "#ff00ff")
+  ;; K&R-escue style
+  (c-add-style "k&r4"
+               '("k&r"
+                 (c-basic-offset . 4)))
+  (setq c-default-style "k&r4")
   ;; Higlight unwanted whitespace
   (setq
    whitespace-style '(face trailing tab-mark)
