@@ -21,7 +21,8 @@
 
 ;; Commands
 
-(declare yabai query query-managed-windows get-layout set-layout key->nav map-by)
+(declare yabai query query-managed-windows get-layout set-layout
+         key->nav map-by get-next-window get-prev-window)
 
 (defn default-layout-for-space-on-display
   [label {:keys [frame] :as display}]
@@ -32,21 +33,19 @@
     ("tty" "ed" "im" "web" "txt")
     (if (and (> (:w frame) 1440)
              (> (:h frame) 900))
-      "bsp" "monocle")
+      "bsp" "stack")
 
     (if (= (:index display) 1)
       ;; Fullscreen windows on secondary displays
-      "float" "monocle")))
+      "float" "stack")))
 
 (defcommand :hjkl "<key> - perform focus action WRT current layout"
   [key]
-  (let [nav (key->nav key)
-        success (yabai "-m" "window" "--focus" nav)]
-    (if (not success)
-      (case nav
-        "prev" (yabai "-m" "window" "--focus" "last")
-        "next" (yabai "-m" "window" "--focus" "first")
-        nil))))
+  (let [nav (key->nav key)]
+    (case nav
+      "next" (yabai "-m" "window" "--focus" (:id (get-next-window)))
+      "prev" (yabai "-m" "window" "--focus" (:id (get-prev-window)))
+      (yabai "-m" "window" "--focus" nav))))
 
 (defcommand :get-layout "- print current space layout"
   [& [space-id]]
@@ -99,16 +98,7 @@
 
 (defn get-layout
   ([] (get-layout (query "--spaces" "--space")))
-  ([space]
-   (if (= "float" (:type space))
-     "float"
-     (let [stacks (->> (query-managed-windows space)
-                       (map :stacked-with)
-                       distinct)]
-       (if (and (= 1 (count stacks))
-                (not (= 0 (first stacks))))
-         "monocle"
-         "bsp")))))
+  ([space] (:type space)))
 
 (defn map-by [key coll]
   (->> coll
@@ -132,26 +122,11 @@
    (let [focused (if (= 1 (:focused space))
                    (query "--windows" "--window"))]
      (case target
-       "bsp"
+       ("bsp" "stack")
        (do
-        (yabai "-m" "space" (:index space) "--layout" "bsp")
-        (yabai "-m" "window" (:first-window space) "--destackify")
+        (yabai "-m" "space" (:index space) "--layout" target)
         (when focused
           (yabai "-m" "window" "--focus" (:id focused))))
-
-       "monocle"
-       (do
-         (yabai "-m" "space" (:index space) "--layout" "bsp")
-         (let [to-stack (query-managed-windows space)
-               root-id (:id (if (some-> focused window-is-managed)
-                              focused (first to-stack)))]
-           (when (seq to-stack)
-             (yabai "-m" "window" root-id "--stackify")
-             (doseq [win-id (map :id to-stack)
-                     :when (not (= root-id win-id))]
-               (yabai "-m" "window" win-id "--warp" root-id))
-             (when focused
-               (yabai "-m" "window" "--focus" (:id focused))))))
 
        (yabai "-m" "space" (:index space) "--layout" target)))))
 
@@ -159,6 +134,8 @@
   (case key
     "j" "south"
     "k" "north"
+    "n" "next"
+    "p" "prev"
     (if (= "bsp" (get-layout))
       (case key
         "h" "west"
@@ -166,6 +143,31 @@
       (case key
         "h" "prev"
         "l" "next"))))
+
+(defn sorted-windows
+  ([] (sorted-windows nil))
+  ([space]
+   (->>
+     (query "--windows" "--space" (:index space))
+     (filter #(= 0 (:minimized %)))
+     (sort-by (juxt (comp :y :frame) (comp :x :frame) :id))
+     )))
+
+(defn get-next-window
+  ([] (get-next-window (query "--windows" "--window")))
+  ([window]
+   (let [windows (sorted-windows (query "--spaces" "--space" (:space window)))
+         next-map (zipmap (map :id windows)
+                          (rest (concat windows windows)))]
+     (get next-map (:id window)))))
+
+(defn get-prev-window
+  ([] (get-prev-window (query "--windows" "--window")))
+  ([window]
+   (let [windows (sorted-windows (query "--spaces" "--space" (:space window)))
+         next-map (zipmap (map :id (rest (concat windows windows)))
+                          windows)]
+     (get next-map (:id window)))))
 
 (defn yabai [& args]
   (let [res (apply shell/sh "yabai" (map str args))]
