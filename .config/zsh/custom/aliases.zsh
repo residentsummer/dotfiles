@@ -123,6 +123,11 @@ _krd () {
 }
 compdef '_krd' krd
 
+function docker-sweep () {
+    dk ps -a -q -f status=exited | paste -s - | xargs docker rm
+    dk images -a -q -f dangling=true | paste -s - | xargs docker rmi
+}
+
 OS=$(uname)
 if [[ "$OS" == "Darwin" ]]; then
     alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport'
