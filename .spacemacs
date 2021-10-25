@@ -584,6 +584,7 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq
+   ahs-idle-interval 3
    global-hl-line-mode nil
    magit-revert-buffers nil
    projectile-enable-caching nil
