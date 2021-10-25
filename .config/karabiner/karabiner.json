@@ -11,7 +11,8 @@
                     "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 500,
-                    "basic.to_if_held_down_threshold_milliseconds": 200
+                    "basic.to_if_held_down_threshold_milliseconds": 200,
+                    "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
                     {
@@ -108,14 +109,6 @@
                         },
                         {
                             "from": {
-                                "key_code": "left_command"
-                            },
-                            "to": {
-                                "key_code": "left_option"
-                            }
-                        },
-                        {
-                            "from": {
                                 "key_code": "left_option"
                             },
                             "to": {
@@ -124,18 +117,26 @@
                         },
                         {
                             "from": {
-                                "key_code": "right_command"
+                                "key_code": "right_option"
                             },
                             "to": {
-                                "key_code": "right_option"
+                                "key_code": "right_command"
                             }
                         },
                         {
                             "from": {
-                                "key_code": "right_option"
+                                "key_code": "left_command"
                             },
                             "to": {
+                                "key_code": "left_option"
+                            }
+                        },
+                        {
+                            "from": {
                                 "key_code": "right_command"
+                            },
+                            "to": {
+                                "key_code": "right_option"
                             }
                         }
                     ]
@@ -240,11 +241,16 @@
                 }
             ],
             "name": "Default profile",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": true,
             "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
-                "keyboard_type": "ansi"
+                "country_code": 0,
+                "keyboard_type": "ansi",
+                "mouse_key_xy_scale": 100
             }
         }
     ]
