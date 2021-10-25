@@ -513,12 +513,14 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (menu-bar-mode t) ;; Fix Emacs windows focus issue on yabai
   ;; Minimize bold face freq (Iosevka's bold is too bold)
   (set-face-bold-p 'bold nil)
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
   (setq
    color-identifiers:min-color-saturation 0.3
    color-identifiers:num-colors 25
-   ;; This makes spacemaces look like my cross of xoria and wombat
+   ;; This makes spacemacs-theme look like my cross of xoria and wombat
    spacemacs-theme-custom-colors
    '((bg1 . "#242424")
      (bg2 . "#202020")
