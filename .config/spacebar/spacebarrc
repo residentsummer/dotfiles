@@ -2,6 +2,8 @@
 
 spacebar -m config position           top
 spacebar -m config height             22
+spacebar -m config spacing_left       25
+spacebar -m config spacing_right      15
 # spacebar -m config text_font          "Fira Mono:Regular:12.0"
 spacebar -m config text_font          "FontAwesome:Regular:11.0"
 spacebar -m config background_color   0xff202020
