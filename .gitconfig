@@ -33,3 +33,5 @@
 	unstage = reset --
 	staged = diff --cached
 	dw = diff -w -b --ignore-space-at-eol --ignore-blank-lines
+[init]
+	defaultBranch = master

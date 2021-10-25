@@ -4,3 +4,4 @@
 *.py[cod]
 .sw[po]
 cscope.*
+.dir-locals.el
