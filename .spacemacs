@@ -60,6 +60,10 @@ This function should only modify configuration layer settings."
      evil-commentary
      git
      ;; lsp
+     (lsp :variables
+          lsp-lens-enable t
+          lsp-modeline-code-actions-segments '(count)
+          lsp-headerline-breadcrumb-enable nil)
      parinfer
      restclient
      ;; semantic
@@ -74,12 +78,12 @@ This function should only modify configuration layer settings."
      docker
      elixir
      emacs-lisp
-     go
+     (go :variables go-backend 'lsp)
      haskell
      html
      markdown
      nginx
-     python
+     (python :variables python-backend 'anaconda)
      ;; (python :variables python-enable-yapf-format-on-save t)
      ruby
      ;; (shell :variables
