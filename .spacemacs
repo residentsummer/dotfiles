@@ -631,7 +631,8 @@ before packages are loaded."
    (kbd "C-,") 'sp-forward-barf-sexp
    (kbd "s-.") 'sp-backward-slurp-sexp
    (kbd "s-,") 'sp-backward-barf-sexp)
-  (evil-leader/set-key-for-mode 'cider-mode "," 'repl-ns-jump)
+  (evil-leader/set-key-for-mode 'clojure-mode "," 'repl-ns-jump)
+  (evil-leader/set-key-for-mode 'clojurescript-mode "," 'repl-ns-jump)
   (evil-define-key-in-maps
    '(normal insert) (clojure-mode-map)
    (kbd "C-x C-x") 'cider-eval-n-tops)
@@ -641,7 +642,7 @@ before packages are loaded."
               (evil-add-word-constituents "_")))
   (add-hook 'clojure-mode-hook
             (lambda ()
-              (evil-add-word-constituents ":/-*!")))
+              (evil-add-word-constituents ":/-*!?.")))
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
               (evil-add-word-constituents "/-'")))
