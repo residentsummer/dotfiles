@@ -9,10 +9,10 @@ mkcd () {
 }
 
 # Usage: ps aux | preserve-header grep Emacs
-preserve-header () {
+phe () {
     (read -r; printf "%s\n" "$REPLY"; eval "$@")
 }
-compdef _precommand preserve-header
+compdef _precommand phe
 
 remux () {
     host=$1
