@@ -7,7 +7,8 @@
 # R0914 too many local variables
 # E0401 unable to import
 # E0402 import not from top-level
-disable=C0111,R0903,R0914,C0330,E0401,E0402,C0411
+# R1705 else after return
+disable=C0111,R0903,R0914,C0330,E0401,E0402,C0411,R1705
 
 # List of builtins function names that should not be used, separated by a comma
 bad-functions=input
