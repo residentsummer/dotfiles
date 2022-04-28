@@ -35,3 +35,5 @@
 	dw = diff -w -b --ignore-space-at-eol --ignore-blank-lines
 [init]
 	defaultBranch = master
+[pull]
+	ff = only
