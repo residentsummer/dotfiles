@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSStatusItem Preferred Position Item-0</key>
+	<real>460</real>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>http://feeds.feedburner.com/clipmenu-appcast</string>
+	<key>SULastCheckTime</key>
+	<date>2022-06-03T06:27:35Z</date>
+	<key>SUScheduledCheckInterval</key>
+	<real>86400</real>
+	<key>commandClickBehavior</key>
+	<string></string>
+	<key>controlClickBehavior</key>
+	<string>popUpActionMenu</string>
+	<key>hotKeys</key>
+	<dict>
+		<key>ClipMenu</key>
+		<dict>
+			<key>keyCode</key>
+			<integer>9</integer>
+			<key>modifiers</key>
+			<integer>768</integer>
+		</dict>
+		<key>SnippetsMenu</key>
+		<dict>
+			<key>keyCode</key>
+			<integer>11</integer>
+			<key>modifiers</key>
+			<integer>768</integer>
+		</dict>
+	</dict>
+	<key>loginItem</key>
+	<true/>
+	<key>numberOfItemsPlaceInline</key>
+	<integer>10</integer>
+	<key>optionClickBehavior</key>
+	<string></string>
+	<key>positionOfSnippets</key>
+	<integer>0</integer>
+	<key>shiftClickBehavior</key>
+	<string></string>
+	<key>storeTypes</key>
+	<dict>
+		<key>Filenames</key>
+		<true/>
+		<key>PDF</key>
+		<true/>
+		<key>PICT</key>
+		<true/>
+		<key>RTF</key>
+		<true/>
+		<key>RTFD</key>
+		<true/>
+		<key>String</key>
+		<true/>
+		<key>TIFF</key>
+		<true/>
+		<key>URL</key>
+		<true/>
+	</dict>
+</dict>
+</plist>
