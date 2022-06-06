@@ -10,12 +10,167 @@
 			<key>type</key>
 			<string>builtin</string>
 		</dict>
-		<key>children</key>
-		<array/>
 		<key>isLeaf</key>
-		<true/>
+		<integer>1</integer>
 		<key>nodeTitle</key>
 		<string>Paste as Plain Text</string>
+	</dict>
+	<dict>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Crypt/Decode from Base64.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>Decode</string>
+			</dict>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Crypt/Encode to Base64.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>Encode</string>
+			</dict>
+		</array>
+		<key>isLeaf</key>
+		<integer>0</integer>
+		<key>nodeTitle</key>
+		<string>Base64</string>
+	</dict>
+	<dict>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/HTML/Decode URI component.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>Decode URI component</string>
+			</dict>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/HTML/Encode URI component.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>Encode URI component</string>
+			</dict>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/HTML/Unescape HTML characters.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>Unescape HTML characters</string>
+			</dict>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/HTML/Strip Tags.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>Strip Tags</string>
+			</dict>
+		</array>
+		<key>isLeaf</key>
+		<integer>0</integer>
+		<key>nodeTitle</key>
+		<string>HTML</string>
+	</dict>
+	<dict>
+		<key>children</key>
+		<array>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Trim/LTrim.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>LTrim.js</string>
+			</dict>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Trim/RTrim.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>RTrim.js</string>
+			</dict>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Trim/Trim.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>Trim.js</string>
+			</dict>
+			<dict>
+				<key>action</key>
+				<dict>
+					<key>path</key>
+					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Collapse Spaces.js</string>
+					<key>type</key>
+					<string>js</string>
+				</dict>
+				<key>isLeaf</key>
+				<integer>1</integer>
+				<key>nodeTitle</key>
+				<string>Collapse Spaces</string>
+			</dict>
+		</array>
+		<key>isLeaf</key>
+		<integer>0</integer>
+		<key>nodeTitle</key>
+		<string>Trim</string>
 	</dict>
 	<dict>
 		<key>children</key>
@@ -28,10 +183,8 @@
 					<key>type</key>
 					<string>js</string>
 				</dict>
-				<key>children</key>
-				<array/>
 				<key>isLeaf</key>
-				<true/>
+				<integer>1</integer>
 				<key>nodeTitle</key>
 				<string>Capitalize.js</string>
 			</dict>
@@ -43,10 +196,8 @@
 					<key>type</key>
 					<string>js</string>
 				</dict>
-				<key>children</key>
-				<array/>
 				<key>isLeaf</key>
-				<true/>
+				<integer>1</integer>
 				<key>nodeTitle</key>
 				<string>lowercase.js</string>
 			</dict>
@@ -58,10 +209,8 @@
 					<key>type</key>
 					<string>js</string>
 				</dict>
-				<key>children</key>
-				<array/>
 				<key>isLeaf</key>
-				<true/>
+				<integer>1</integer>
 				<key>nodeTitle</key>
 				<string>Title Case.js</string>
 			</dict>
@@ -73,87 +222,16 @@
 					<key>type</key>
 					<string>js</string>
 				</dict>
-				<key>children</key>
-				<array/>
 				<key>isLeaf</key>
-				<true/>
+				<integer>1</integer>
 				<key>nodeTitle</key>
 				<string>UPPERCASE.js</string>
 			</dict>
 		</array>
 		<key>isLeaf</key>
-		<false/>
+		<integer>0</integer>
 		<key>nodeTitle</key>
 		<string>Case</string>
-	</dict>
-	<dict>
-		<key>children</key>
-		<array>
-			<dict>
-				<key>action</key>
-				<dict>
-					<key>path</key>
-					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Collapse Spaces.js</string>
-					<key>type</key>
-					<string>js</string>
-				</dict>
-				<key>children</key>
-				<array/>
-				<key>isLeaf</key>
-				<true/>
-				<key>nodeTitle</key>
-				<string>Collapse Spaces</string>
-			</dict>
-			<dict>
-				<key>action</key>
-				<dict>
-					<key>path</key>
-					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Trim/LTrim.js</string>
-					<key>type</key>
-					<string>js</string>
-				</dict>
-				<key>children</key>
-				<array/>
-				<key>isLeaf</key>
-				<true/>
-				<key>nodeTitle</key>
-				<string>LTrim.js</string>
-			</dict>
-			<dict>
-				<key>action</key>
-				<dict>
-					<key>path</key>
-					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Trim/RTrim.js</string>
-					<key>type</key>
-					<string>js</string>
-				</dict>
-				<key>children</key>
-				<array/>
-				<key>isLeaf</key>
-				<true/>
-				<key>nodeTitle</key>
-				<string>RTrim.js</string>
-			</dict>
-			<dict>
-				<key>action</key>
-				<dict>
-					<key>path</key>
-					<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Trim/Trim.js</string>
-					<key>type</key>
-					<string>js</string>
-				</dict>
-				<key>children</key>
-				<array/>
-				<key>isLeaf</key>
-				<true/>
-				<key>nodeTitle</key>
-				<string>Trim.js</string>
-			</dict>
-		</array>
-		<key>isLeaf</key>
-		<false/>
-		<key>nodeTitle</key>
-		<string>Trim</string>
 	</dict>
 	<dict>
 		<key>action</key>
@@ -163,110 +241,10 @@
 			<key>type</key>
 			<string>builtin</string>
 		</dict>
-		<key>children</key>
-		<array/>
 		<key>isLeaf</key>
-		<true/>
+		<integer>1</integer>
 		<key>nodeTitle</key>
 		<string>Remove</string>
-	</dict>
-	<dict>
-		<key>children</key>
-		<array/>
-		<key>isLeaf</key>
-		<false/>
-		<key>nodeTitle</key>
-		<string>Dencode</string>
-	</dict>
-	<dict>
-		<key>action</key>
-		<dict>
-			<key>path</key>
-			<string>/Applications/ClipMenu.app/Contents/Resources/script/action/HTML/Decode URI component.js</string>
-			<key>type</key>
-			<string>js</string>
-		</dict>
-		<key>children</key>
-		<array/>
-		<key>isLeaf</key>
-		<true/>
-		<key>nodeTitle</key>
-		<string>Decode URI component</string>
-	</dict>
-	<dict>
-		<key>action</key>
-		<dict>
-			<key>path</key>
-			<string>/Applications/ClipMenu.app/Contents/Resources/script/action/HTML/Encode URI component.js</string>
-			<key>type</key>
-			<string>js</string>
-		</dict>
-		<key>children</key>
-		<array/>
-		<key>isLeaf</key>
-		<true/>
-		<key>nodeTitle</key>
-		<string>Encode URI component</string>
-	</dict>
-	<dict>
-		<key>action</key>
-		<dict>
-			<key>path</key>
-			<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Crypt/Decode from Base64.js</string>
-			<key>type</key>
-			<string>js</string>
-		</dict>
-		<key>children</key>
-		<array/>
-		<key>isLeaf</key>
-		<true/>
-		<key>nodeTitle</key>
-		<string>Decode from Base64</string>
-	</dict>
-	<dict>
-		<key>action</key>
-		<dict>
-			<key>path</key>
-			<string>/Applications/ClipMenu.app/Contents/Resources/script/action/Crypt/Encode to Base64.js</string>
-			<key>type</key>
-			<string>js</string>
-		</dict>
-		<key>children</key>
-		<array/>
-		<key>isLeaf</key>
-		<true/>
-		<key>nodeTitle</key>
-		<string>Encode to Base64</string>
-	</dict>
-	<dict>
-		<key>action</key>
-		<dict>
-			<key>path</key>
-			<string>/Applications/ClipMenu.app/Contents/Resources/script/action/HTML/Unescape HTML characters.js</string>
-			<key>type</key>
-			<string>js</string>
-		</dict>
-		<key>children</key>
-		<array/>
-		<key>isLeaf</key>
-		<true/>
-		<key>nodeTitle</key>
-		<string>Unescape HTML characters</string>
-	</dict>
-	<dict>
-		<key>action</key>
-		<dict>
-			<key>path</key>
-			<string>/Applications/ClipMenu.app/Contents/Resources/script/action/HTML/Strip Tags.js</string>
-			<key>type</key>
-			<string>js</string>
-		</dict>
-		<key>children</key>
-		<array/>
-		<key>isLeaf</key>
-		<true/>
-		<key>nodeTitle</key>
-		<string>Strip Tags</string>
 	</dict>
 </array>
 </plist>
