@@ -79,7 +79,7 @@ ZSH_CUSTOM=$HOME/.config/zsh/custom
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx fancy-ctrl-z docker zsh-z)
+plugins=(git macos fancy-ctrl-z docker zsh-z)
 
 # User configuration
 
