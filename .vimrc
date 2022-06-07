@@ -426,6 +426,9 @@ let g:hardtime_ignore_quickfix = 1
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
 "}}}
+"{{{ hardtime
+let g:snipMate = { 'snippet_version' : 1 }
+"}}}
 "}}}
 "{{{  Colorful life!
 if has("gui_running")
