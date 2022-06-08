@@ -31,8 +31,8 @@
     "float"
 
     ("tty" "ed" "im" "web" "txt")
-    (if (and (> (:w frame) 1440)
-             (> (:h frame) 900))
+    (if (and (> (:w frame) 1512)
+             (> (:h frame) 982))
       "bsp" "stack")
 
     (if (= (:index display) 1)
