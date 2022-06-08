@@ -293,7 +293,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Iosevka SS05"
-                               :size 13.0
+                               :size 14.0
                                :weight light
                                :width normal)
    ;; dotspacemacs-default-font '("Fira Mono"
