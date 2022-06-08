@@ -149,7 +149,7 @@
   ([space]
    (->>
      (query "--windows" "--space" (:index space))
-     (filter #(= 0 (:minimized %)))
+     (remove :is-minimized)
      (sort-by (juxt (comp :y :frame) (comp :x :frame) :id))
      )))
 
