@@ -153,21 +153,19 @@
      (sort-by (juxt (comp :y :frame) (comp :x :frame) :id))
      )))
 
-(defn get-next-window
-  ([] (get-next-window (query "--windows" "--window")))
-  ([window]
-   (let [windows (sorted-windows (query "--spaces" "--space" (:space window)))
-         next-map (zipmap (map :id windows)
-                          (rest (concat windows windows)))]
-     (get next-map (:id window)))))
+(defn get-next-window []
+  (let [windows (sorted-windows (query "--windows" "--space"))
+        window (first (filter :has-focus windows))
+        next-map (zipmap (map :id windows)
+                         (rest (concat windows windows)))]
+    (get next-map (:id window))))
 
-(defn get-prev-window
-  ([] (get-prev-window (query "--windows" "--window")))
-  ([window]
-   (let [windows (sorted-windows (query "--spaces" "--space" (:space window)))
-         next-map (zipmap (map :id (rest (concat windows windows)))
-                          windows)]
-     (get next-map (:id window)))))
+(defn get-prev-window []
+  (let [windows (sorted-windows (query "--windows" "--space"))
+        window (first (filter :has-focus windows))
+        next-map (zipmap (map :id (rest (concat windows windows)))
+                         windows)]
+    (get next-map (:id window))))
 
 (defn yabai [& args]
   (let [res (apply shell/sh "yabai" (map str args))]
