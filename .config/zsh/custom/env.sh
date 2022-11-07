@@ -22,6 +22,9 @@ fi
 if [[ -d $HOME/.krew/bin ]]; then
     export PATH=$PATH:$HOME/.krew/bin
 fi
+if [[ -d $HOME/go/bin ]]; then
+    export PATH=$PATH:$HOME/go/bin
+fi
 
 # Local scripts
 if [[ -d $HOME/Library/bin ]]; then
