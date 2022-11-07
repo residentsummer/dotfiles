@@ -496,10 +496,11 @@ map Q gq
 " Make "Y" to behave like "C" and "D"
 nmap Y y$
 " Shortcuts for system clipboard
-map <leader>y "+y
-map <leader>Y "+Y
-map <leader>p "+p
-map <leader>P "+P
+set clipboard=unnamed
+" map <leader>y "+y
+" map <leader>Y "+Y
+" map <leader>p "+p
+" map <leader>P "+P
 " Select just pasted region
 nmap <leader>v V`]
 ""}}}
