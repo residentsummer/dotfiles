@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>NSStatusItem Preferred Position Item-0</key>
-	<real>460</real>
+	<real>423</real>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
 	<string>http://feeds.feedburner.com/clipmenu-appcast</string>
 	<key>SULastCheckTime</key>
-	<date>2022-06-03T06:27:35Z</date>
+	<date>2022-11-01T13:40:52Z</date>
 	<key>SUScheduledCheckInterval</key>
 	<real>86400</real>
 	<key>commandClickBehavior</key>

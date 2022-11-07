@@ -584,6 +584,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq warning-minimum-level :error)
   (menu-bar-mode t) ;; Fix Emacs windows focus issue on yabai
   ;; Minimize bold face freq (Iosevka's bold is too bold)
   (set-face-bold-p 'bold nil)

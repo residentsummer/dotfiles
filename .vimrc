@@ -560,7 +560,7 @@ nmap <leader>u :GundoToggle<CR>
 "}}}
 "{{{ fugitive
 command GcA Gcommit --amend --reuse-message=HEAD
-nmap <leader>g :Gstatus<CR>
+nmap <leader>g :Git<CR>
 nmap <leader>gw :Gw<CR>
 "}}}
 "{{{ Quick save
