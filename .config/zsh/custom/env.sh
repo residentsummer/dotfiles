@@ -3,6 +3,9 @@ export EDITOR=vim
 export PYTHONSTARTUP="$HOME/.pyrc"
 export PYTHONIOENCODING="UTF-8"
 
+# Stop advertising snyk
+export DOCKER_SCAN_SUGGEST=false
+
 if [ -f $ZSH_CUSTOM/local-env.sh ]; then
     source $ZSH_CUSTOM/local-env.sh
 fi
