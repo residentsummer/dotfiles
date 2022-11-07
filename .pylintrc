@@ -8,16 +8,17 @@
 # E0401 unable to import
 # E0402 import not from top-level
 # R1705 else after return
-disable=C0111,R0903,R0914,C0330,E0401,E0402,C0411,R1705
+# R1724 else after continue
+disable=C0111,R0903,R0914,C0330,E0401,E0402,C0411,R1705,R1724
 
 # List of builtins function names that should not be used, separated by a comma
-bad-functions=input
+#bad-functions=input
 
 # Maximum number of characters on a single line.
 max-line-length=100
 
 # List of optional constructs for which whitespace checking is disabled
-no-space-check=trailing-comma
+#no-space-check=trailing-comma
 
 # List of note tags to take in consideration, separated by a comma.
 notes=FIXME,XXX,TODO,NOTE
