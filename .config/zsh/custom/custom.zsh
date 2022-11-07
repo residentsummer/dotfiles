@@ -24,6 +24,16 @@ xml_pp () {
     xmllint --noent --encode UTF-8 --format -
 }
 
+shrink_pdf () {
+    if [[ -z "$1" || -z "$2" ]]; then
+        echo "usage: shrink_pdf infile outfile"
+        return 1
+    fi
+
+    # https://medium.com/@treyharris/converting-a-scanned-document-into-a-compressed-searchable-pdf-with-redactions-63f61c34fe4c
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH "-sOutputFile=${2}" "${1}" >/dev/null
+}
+
 pie () {
     if [[ -z "$1" || -z "$3" ]]; then
         echo "usage: replace before after file [... file]"
