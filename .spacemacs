@@ -677,6 +677,8 @@ before packages are loaded."
   ;; I don't use layouts
   (setq
    persp-init-new-frame-behaviour-override (lambda (&rest _)))
+  ;; Trying to fix slowing on long lines
+  (setq bidi-paragraph-direction 'left-to-right)
   ;; Bindings
   (evil-leader/set-key
     "SPC" 'evil-switch-to-windows-last-buffer
