@@ -53,6 +53,7 @@ This function should only modify configuration layer settings."
      osx
      (spell-checking :variables spell-checking-enable-by-default nil)
      treemacs
+     org ;; (org :variables org-enable-modern-support t)
      ;; Prog
      auto-completion
      ;; cscope
@@ -731,6 +732,10 @@ before packages are loaded."
   (add-hook 'json-mode-hook
           (lambda ()
             (setq spacemacs-yank-indent-threshold 0)))
+  ;; Continue lists on RET in org-mode
+  (evil-define-key-in-maps
+   '(insert) (org-mode-map)
+   (kbd "RET") 'evil-org-return)
   (setq
    flycheck-check-syntax-automatically
    '(save new-line mode-enabled)
@@ -781,27 +786,14 @@ This function is called at the very end of Spacemacs initialization."
  '(magit-section-visibility-indicator nil)
  '(magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
  '(package-selected-packages
-   '(lsp-pyright lsp-origami origami dap-mode bui solidity-flycheck solidity-mode utop tuareg caml typescript-mode ocp-indent nodejs-repl mvn meghanada maven-test-mode lsp-ui lsp-treemacs lsp-python-ms lsp-java json-navigator hierarchy js2-mode js-doc helm-lsp groovy-mode groovy-imports pcache gradle-mode flycheck-ocaml merlin emojify emoji-cheat-sheet-plus dune company-emoji yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org tagedit symon symbol-overlay string-inflection sql-indent spaceline-all-the-icons smeargle slim-mode seeing-is-believing scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe reveal-in-osx-finder restclient-helm restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements password-generator parinfer paradox overseer osx-trash osx-dictionary osx-clipboard org-superstar open-junk-file ob-restclient ob-http ob-elixir nginx-mode nameless mwim move-text mmm-mode minitest markdown-toc magit-svn magit-section magit-gitflow macrostep lsp-haskell lorem-ipsum live-py-mode link-hint launchctl jinja2-mode intero indent-guide importmagic impatient-mode hybrid-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-ls-git helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flycheck-credo flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-snipe evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu emr emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode dockerfile-mode docker diminish devdocs dash-at-point dante cython-mode csv-mode company-web company-restclient company-ghci company-ghc company-cabal company-ansible company-anaconda command-log-mode column-enforce-mode color-identifiers-mode cmm-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider chruby centered-cursor-mode bundler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile attrap ansible-doc ansible alchemist aggressive-indent ace-link ace-jump-helm-line ac-ispell))
+   '(gnuplot helm-org-rifle json-mode json-reformat json-snatcher org-cliplink org-contrib org-download org-mime gntp org-present org-projectile org-category-capture org-rich-yank orgit emacsql closql org compat lsp-pyright lsp-origami origami dap-mode bui solidity-flycheck solidity-mode utop tuareg caml typescript-mode ocp-indent nodejs-repl mvn meghanada maven-test-mode lsp-ui lsp-treemacs lsp-python-ms lsp-java json-navigator hierarchy js2-mode js-doc helm-lsp groovy-mode groovy-imports pcache gradle-mode flycheck-ocaml merlin emojify emoji-cheat-sheet-plus dune company-emoji yasnippet-snippets yapfify yaml-mode ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org tagedit symon symbol-overlay string-inflection sql-indent spaceline-all-the-icons smeargle slim-mode seeing-is-believing scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe reveal-in-osx-finder restclient-helm restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements password-generator parinfer paradox overseer osx-trash osx-dictionary osx-clipboard org-superstar open-junk-file ob-restclient ob-http ob-elixir nginx-mode nameless mwim move-text mmm-mode minitest markdown-toc magit-svn magit-section magit-gitflow macrostep lsp-haskell lorem-ipsum live-py-mode link-hint launchctl jinja2-mode intero indent-guide importmagic impatient-mode hybrid-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-ls-git helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flycheck-credo flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-snipe evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu emr emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode dockerfile-mode docker diminish devdocs dash-at-point dante cython-mode csv-mode company-web company-restclient company-ghci company-ghc company-cabal company-ansible company-anaconda command-log-mode column-enforce-mode color-identifiers-mode cmm-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu cider chruby centered-cursor-mode bundler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile attrap ansible-doc ansible alchemist aggressive-indent ace-link ace-jump-helm-line ac-ispell))
  '(safe-local-variable-values
-   '((eval ansible 1) (eval progn (setq ansible-vault-password-file (concat (projectile-project-root) "/.vault_pass")) (add-hook 'ansible-hook 'ansible-auto-decrypt-encrypt nil t)) (cider-shadow-watched-builds "front") (cider-shadow-default-options . "front") (cider-default-cljs-repl . shadow))))
+   '((eval ansible 1) (eval progn (setq ansible-vault-password-file (concat (projectile-project-root) "/.vault_pass")) (add-hook 'ansible-hook 'ansible-auto-decrypt-encrypt nil t)) (cider-shadow-watched-builds "front") (cider-shadow-default-options . "front") (cider-default-cljs-repl . shadow)))
+ '(warning-suppress-types '((emacsql))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
 )
