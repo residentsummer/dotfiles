@@ -51,14 +51,15 @@ yabai -m config window_gap                   3
 
 # specific space settings
 yabai -m space 1 --label tty
-yabai -m space 2 --label im
-yabai -m space 3 --label ed
-yabai -m space 4 --label web
-yabai -m space 5 --label flt
-# yabai -m space flt --layout float
-yabai -m space 6 --label mus
-# yabai -m space mus --layout float
-yabai -m space 7 --label txt
+yabai -m space 2 --label eml
+yabai -m space 3 --label im
+yabai -m space 4 --label ed
+yabai -m space 5 --label web
+yabai -m space 6 --label flt
+yabai -m space flt --layout float
+yabai -m space 7 --label mus
+yabai -m space mus --layout float
+yabai -m space 8 --label txt
 
 $HOME/Library/bin/yb configure-spaces
 $HOME/Library/bin/yb track-display-changes
