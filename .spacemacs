@@ -81,6 +81,7 @@ This function should only modify configuration layer settings."
      (go :variables go-backend 'lsp)
      haskell
      html
+     json
      markdown
      nginx
      (python :variables python-backend 'anaconda)
@@ -726,6 +727,10 @@ before packages are loaded."
   (add-hook 'c-mode-hook
             (lambda ()
               (evil-add-word-constituents "_")))
+  ;; do not reindent JSONs
+  (add-hook 'json-mode-hook
+          (lambda ()
+            (setq spacemacs-yank-indent-threshold 0)))
   (setq
    flycheck-check-syntax-automatically
    '(save new-line mode-enabled)
