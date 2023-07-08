@@ -66,5 +66,6 @@ $HOME/Library/bin/yb track-display-changes
 
 # Rules
 yabai -m rule --add label=firefox-save-dialog app=Firefox title=Opening.* layer=above manage=off
+yabai -m rule --add app="^Steam$" manage=off mouse_follows_focus=off
 
 echo "yabai configuration loaded.."
