@@ -717,19 +717,16 @@ before packages are loaded."
   (evil-define-key-in-maps
    '(normal insert) (clojure-mode-map)
    (kbd "C-x C-x") 'cider-eval-n-tops)
+  ;; Jump over symbols instead of "words"
+  (define-key evil-outer-text-objects-map "w" 'evil-a-symbol)
+  (define-key evil-inner-text-objects-map "w" 'evil-inner-symbol)
+  (define-key evil-outer-text-objects-map "o" 'evil-a-word)
+  (define-key evil-inner-text-objects-map "o" 'evil-inner-word)
+  (defalias 'forward-evil-word 'forward-evil-symbol)
   ;; Add language-specific chars to word matcher
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (evil-add-word-constituents "_")))
-  (add-hook 'clojure-mode-hook
-            (lambda ()
-              (evil-add-word-constituents ":/-*!?.")))
   (add-hook 'emacs-lisp-mode-hook
             (lambda ()
-              (evil-add-word-constituents "/-'")))
-  (add-hook 'c-mode-hook
-            (lambda ()
-              (evil-add-word-constituents "_")))
+              (evil-add-word-constituents "'")))
   ;; do not reindent JSONs
   (add-hook 'json-mode-hook
           (lambda ()
