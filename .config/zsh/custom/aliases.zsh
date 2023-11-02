@@ -102,7 +102,7 @@ kc-get-all () {
 
 # Show pods, using more than 0.1 core
 khogs () {
-    kubectl top pods -A | grep -ve ' \d\{1,2\}m ' | preserve-header sort -k 3 -h -r
+    kubectl top pods -A | grep -ve ' \d\{1,2\}m ' | phe sort -k 3 -h -r
 }
 
 # Restart pods, associated with the deployment "foo" [in "bar" ns]:
