@@ -51,8 +51,8 @@ yabai -m config window_gap                   3
 
 # specific space settings
 yabai -m space 1 --label tty
-yabai -m space 2 --label eml
-yabai -m space 3 --label im
+yabai -m space 2 --label im
+yabai -m space 3 --label eml
 yabai -m space 4 --label ed
 yabai -m space 5 --label web
 yabai -m space 6 --label flt
