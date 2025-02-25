@@ -6,6 +6,8 @@
 	editor = vim
 	pager = less -FRX
 	autocrlf = input
+[merge]
+	ff = no
 [color]
 	ui = true
 [push]
