@@ -8,6 +8,7 @@ alias -g G="| grep"
 alias -g J="| json_pp"
 
 alias gl='g l5'
+alias gpl='g pull && g l5'
 alias gst='g st'
 alias gdw='g dw'
 alias gdc='g diff --cached'
