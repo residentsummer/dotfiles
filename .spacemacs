@@ -201,7 +201,7 @@ It should only modify the values of Spacemacs settings."
    ;; (default 'vim)
    dotspacemacs-editing-style '(vim :variables
                                     vim-style-remap-Y-to-y$ t
-                                    vim-style-retain-visual-state-on-shift t)
+                                    vim-style-retain-visual-state-on-shift nil)
 
    ;; If non-nil show the version string in the Spacemacs buffer. It will
    ;; appear as (spacemacs version)@(emacs version)
@@ -655,6 +655,18 @@ by modifying its syntax table."
             (end (progn (end-of-defun) (point))))
         (cider-eval-region start end)))))
 
+(defun evil-visual-shift-left ()
+  (interactive)
+  (call-interactively 'evil-shift-left)
+  (evil-normal-state)
+  (evil-visual-restore))
+
+(defun evil-visual-shift-right ()
+  (interactive)
+  (call-interactively 'evil-shift-right)
+  (evil-normal-state)
+  (evil-visual-restore))
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -688,6 +700,9 @@ before packages are loaded."
   (evil-define-key 'normal evil-commentary-mode-map
     "\\y" 'evil-commentary-yank-line
     "\\\\" 'evil-commentary-line)
+  ;; preserve visual selection on region shifts
+  (define-key evil-visual-state-map "<" 'evil-visual-shift-left)
+  (define-key evil-visual-state-map ">" 'evil-visual-shift-right)
   ;; Who needs mappings starting with Esc?
   (setq evil-esc-delay 0)
   ;; Don't pop completion menu here and there
