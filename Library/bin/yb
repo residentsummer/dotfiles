@@ -136,10 +136,15 @@
     "k" "north"
     "n" "next"
     "p" "prev"
-    (if (= "bsp" (get-layout))
+
+    ;; other keys
+    (case (get-layout)
+      "bsp"
       (case key
         "h" "west"
         "l" "east")
+
+      ;; other layouts
       (case key
         "h" "prev"
         "l" "next"))))
