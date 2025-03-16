@@ -52,7 +52,6 @@ This function should only modify configuration layer settings."
      multiple-cursors
      osx
      (spell-checking :variables spell-checking-enable-by-default nil)
-     treemacs
      org ;; (org :variables org-enable-modern-support t)
      ;; Prog
      auto-completion
@@ -65,7 +64,7 @@ This function should only modify configuration layer settings."
           lsp-lens-enable t
           lsp-modeline-code-actions-segments '(count)
           lsp-headerline-breadcrumb-enable nil)
-     parinfer
+     ;; parinfer
      restclient
      ;; semantic
      syntax-checking
@@ -77,21 +76,17 @@ This function should only modify configuration layer settings."
               cider-mode-line-show-connection nil)
      csv
      docker
-     elixir
      emacs-lisp
      (go :variables go-backend 'lsp)
-     haskell
      html
      json
      markdown
      nginx
      (python :variables python-backend 'anaconda)
      ;; (python :variables python-enable-yapf-format-on-save t)
-     ruby
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     solidity
      sql)
 
 
@@ -104,7 +99,7 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
-   '(color-identifiers-mode scad-mode)
+   '(color-identifiers-mode scad-mode dash-at-point)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
