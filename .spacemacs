@@ -78,8 +78,20 @@ This function should only modify configuration layer settings."
      ;; Langu
      ansible
      (clojure :variables
-              clojure-enable-fancify-symbols t
-              cider-mode-line-show-connection nil)
+              clojure-backend 'cider
+              cider-reuse-dead-repls 'auto
+              clojure-enable-kaocha-runner t            ; enable Kaocha test runner
+              cider-repl-display-help-banner nil        ; disable help banner
+              cider-print-fn 'puget                     ; pretty printing with sorted keys / set values
+              clojure-indent-style 'align-arguments
+              clojure-align-forms-automatically t
+              clojure-toplevel-inside-comment-form t ; clashes with LSP
+              cider-result-overlay-position 'at-point   ; results shown right after expression
+              cider-overlays-use-font-lock t
+              cider-repl-buffer-size-limit 100          ; limit lines shown in REPL buffer
+              cider-mode-line-show-connection nil
+              nrepl-use-ssh-fallback-for-remote-hosts t ; connect via ssh to remote hosts
+              )
      csv
      docker
      emacs-lisp
