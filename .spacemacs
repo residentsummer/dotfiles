@@ -54,7 +54,13 @@ This function should only modify configuration layer settings."
      (spell-checking :variables spell-checking-enable-by-default nil)
      org ;; (org :variables org-enable-modern-support t)
      ;; Prog
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-return-key-behavior 'complete
+                      auto-completion-tab-key-behavior 'cycle
+                      auto-completion-minimum-prefix-length 2
+                      ;; Don't pop completion menu here and there
+                      auto-completion-idle-delay nil
+                      auto-completion-use-company-box t)
      ;; cscope
      dash
      evil-commentary
@@ -705,10 +711,7 @@ before packages are loaded."
   (define-key evil-visual-state-map ">" 'evil-visual-shift-right)
   ;; Who needs mappings starting with Esc?
   (setq evil-esc-delay 0)
-  ;; Don't pop completion menu here and there
-  (setq company-idle-delay nil)
-  (define-key evil-insert-state-map
-    (kbd "TAB") 'company-indent-or-complete-common)
+  (define-key evil-insert-state-map (kbd "TAB") 'company-indent-or-complete-common)
   ;; Replace evil completion with company, preserving bindings
   (define-key evil-insert-state-map (kbd "C-n") nil)
   (define-key evil-insert-state-map (kbd "C-p") nil)
