@@ -1,0 +1,8 @@
+#!/bin/bash
+
+osascript -e "tell application \"Brave Browser\"
+	set w to first window whose zoomed is true
+	make new tab at w with properties {URL:\"$1\"}
+	activate
+	set index of w to 1
+end tell"

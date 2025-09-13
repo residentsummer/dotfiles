@@ -710,6 +710,10 @@ before packages are loaded."
   (define-key evil-normal-state-map ",/"
               'spacemacs/helm-project-smart-do-search-region-or-symbol)
   (define-key evil-normal-state-map ",." 'helm-projectile-find-file)
+  ;; Search in broswer
+  (define-key evil-normal-state-map (kbd "H-f") 'browse-apropos-url)
+  (define-key evil-visual-state-map (kbd "H-f") 'browse-apropos-url-on-region)
+  ;; Split lines
   (define-key evil-normal-state-map "H" 'sp-newline)
   (evil-define-key 'visual evil-commentary-mode-map
     "\\y" 'evil-commentary-yank
@@ -793,8 +797,44 @@ before packages are loaded."
    helm-ff-cache-mode-lighter nil
    helm-ff-cache-mode-lighter-sleep nil
    helm-ff-cache-mode-lighter-updating nil)
+
+  (setq apropos-url-alist
+        '(("^g:? +\\(.*\\)" . ;; Google Web
+           "http://www.google.com/search?q=\\1")
+
+          ("^py:? +\\(.*\\)" . ;; Python
+           "https://docs.python.org/3/search.html?q=\\1")
+
+          ("^ewiki:? +\\(.*\\)" . ;; Emacs Wiki Search
+           "http://www.emacswiki.org/cgi-bin/wiki?search=\\1")
+
+          ("^\\(.*\\)" . ;; Brave search - default
+           "https://search.brave.com/search?q=\\1")
+          ))
+
   ;; Start scrolling before cursor hits the edges
   (setq scroll-margin 10))
+
+(defun browse-url-brave-doc (url &optional new-window)
+  (shell-command
+   ;; opens an url in a dedicated window (opened beforehand)
+   ;; via applescript
+   (concat "brave-doc-open-url '" url "'")))
+
+(defun browse-apropos-url (text &optional new-window)
+  (interactive "sQuery: ")
+  (let ((text (replace-regexp-in-string
+               "^ *\\| *$" ""
+               (replace-regexp-in-string "[ \t\n]+" " " text))))
+    (let ((url (assoc-default
+                text apropos-url-alist
+                '(lambda (a b) (let () (setq __braplast a) (string-match a b)))
+                text)))
+      (browse-url-brave-doc (replace-regexp-in-string __braplast url text) new-window))))
+
+(defun browse-apropos-url-on-region (min max text &optional new-window)
+  (interactive "r \nsAppend region to location: \nP")
+  (browse-apropos-url (concat text " " (buffer-substring min max)) new-window))
 
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
