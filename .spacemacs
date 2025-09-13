@@ -79,6 +79,7 @@ This function should only modify configuration layer settings."
      (ansible :variables ansible-auto-encrypt-decrypt t)
      (clojure :variables
               clojure-backend 'cider
+              clojure-enable-linters '(clj-kondo)
               cider-reuse-dead-repls 'auto
               clojure-enable-kaocha-runner t            ; enable Kaocha test runner
               cider-repl-display-help-banner nil        ; disable help banner
@@ -742,6 +743,8 @@ before packages are loaded."
    (kbd "s-,") 'sp-backward-barf-sexp)
   (evil-leader/set-key-for-mode 'clojure-mode "," 'repl-ns-jump)
   (evil-leader/set-key-for-mode 'clojurescript-mode "," 'repl-ns-jump)
+  (evil-leader/set-key-for-mode 'clojure-mode "et" 'cider-tap-last-sexp)
+  (evil-leader/set-key-for-mode 'clojurescript-mode "et" 'cider-tap-last-sexp)
   (evil-define-key-in-maps
    '(normal insert) (clojure-mode-map)
    (kbd "C-x C-x") 'cider-eval-n-tops)
