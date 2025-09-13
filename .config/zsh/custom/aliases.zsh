@@ -24,6 +24,7 @@ alias dip2='docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}
 alias dk-host-shell='docker run -it --rm --privileged --pid=host justincormack/nsenter1'
 alias dkl='docker logs -f --tail=100'
 alias kcl='kubectl logs -f --tail=100'
+alias kcll='kubectl get pods --sort-by=.metadata.creationTimestamp | cut -f 1 -d " " | tail -n 1 | xargs kubectl logs --tail=100 -f'
 alias kce='kubectl exec -it'
 alias kcy='kubectl get -o yaml'
 
