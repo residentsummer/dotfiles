@@ -607,6 +607,8 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq warning-minimum-level :error)
+  ;; (setq ns-use-srgb-colorspace nil
+  ;;       powerline-image-apple-rgb nil)
   (menu-bar-mode t) ;; Fix Emacs windows focus issue on yabai
   ;; Minimize bold face freq (Iosevka's bold is too bold)
   (set-face-bold-p 'bold nil)
@@ -814,6 +816,8 @@ before packages are loaded."
           ("^\\(.*\\)" . ;; Brave search - default
            "https://search.brave.com/search?q=\\1")
           ))
+
+  (setq helm-split-window-inside-p t)
 
   ;; Start scrolling before cursor hits the edges
   (setq scroll-margin 10))
