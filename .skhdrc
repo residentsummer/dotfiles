@@ -175,3 +175,5 @@ shift + alt - f : yabai -m window --toggle native-fullscreen
 ctrl + alt - a : ~/Library/bin/yb set-layout bsp
 ctrl + alt - s : ~/Library/bin/yb set-layout stack
 ctrl + alt - d : ~/Library/bin/yb set-layout float
+
+ctrl + cmd - r : pkill -f yabai
